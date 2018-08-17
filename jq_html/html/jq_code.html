@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证倒计时</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <style>
+        body{
+            text-align: center;
+        }
+        .code-box{
+            width: 400px;
+            margin: 50px auto;
+            font-size: 14px;
+            color: #666;
+            position: relative;
+            border-bottom:1px solid #d7d7d7;
+            line-height: 24px;
+            padding-bottom: 10px;
+        }
+        .code-box .code-label{
+            position: absolute;
+            left:0;
+            display: inline-block;
+            line-height: 35px;
+        }
+        .code-box .code-btn{
+            position: absolute;
+            right:0;
+            top:0;
+            display: inline-block;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border:1px solid #d7d7d7;
+            padding:8px;
+            cursor: pointer;
+            width: 100px;
+            text-align: center;
+        }
+        .code-box .gray{
+            background-color: #ccc;
+            color: #999;
+        }
+        .code-box .input-box{
+            padding-left: 60px;
+            padding-right: 100px;
+        }
+        .code-box .input-box .input{
+            display: block;
+            width: 100%;
+            padding: 10px 5px;
+            border:none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div class="code-box">
+    <label class="code-label">验证码</label>
+    <div class="input-box">
+        <input type="text" class="input" />
+    </div>
+    <input class="code-btn js-code" type="button" value="获取验证码"/>
+</div>
+
+<script>
+    (function($){
+        $doc=$(document);
+        init={};
+        init.makeout=function(){
+            $doc.on('click','.js-code',function(){
+                var _this=this,
+                    $this=$(this),
+                    _time;
+                _txt=60;
+                _this.disabled='disabled';
+                clearInterval(_time);
+                var _time=setInterval(function(){
+                    _txt--;
+                    if(_txt==0){
+                        _this.disabled=false;
+                        $this.removeClass('gray').val('获取验证码');
+                        clearInterval(_time);
+                    }else{
+                        $this.val(_txt);
+                        $this.addClass('gray');
+                    }
+                },1000);
+            });
+        };
+
+        $.each(init, function() {
+            typeof this === 'function' && this();
+        });
+    })(jQuery)
+</script>
+</body>
+</html>

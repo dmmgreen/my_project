@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="test" width="800px" height="800px">
+    浏览器不支持Canvas,请升级浏览器
+</canvas>
+<script>
+    var cav=document.getElementById('test');
+    if(cav.getContext){
+        var ctx=cav.getContext('2d');
+        ctx.beginPath();
+        ctx.translate(400,400);
+        ctx.moveTo(-25,-50);
+        ctx.lineTo(-10,-80);
+        ctx.lineTo(-20,-80);
+        ctx.lineTo(-5,-110);
+        ctx.lineTo(-15,-110);
+        ctx.lineTo(0,-140);
+        ctx.lineTo(15,-110);
+        ctx.lineTo(5,-110);
+        ctx.lineTo(20,-80);
+        ctx.lineTo(10,-80);
+        ctx.lineTo(25,-50);
+        ctx.closePath();
+        //加宽线条
+        ctx.lineWidth=4;
+        //平滑路径接合点
+        ctx.lineJoin = 'round';
+        //将颜色改成棕色
+        ctx.strokeStyle='#663300';
+        ctx.stroke();
+        ctx.fillStyle="#339900";
+        ctx.fill();
+        ctx.fillStyle='#663300';
+        ctx.fillRect(-5,-50,10,50);
+        ctx.save();
+        ctx.beginPath();
+        ctx.translate(-10,350);
+        ctx.moveTo(0,0);
+        ctx.quadraticCurveTo(170,-50,260,-190);
+        ctx.quadraticCurveTo(310,-250,410,-250);
+        ctx.strokeStyle="#663300";
+        ctx.lineWidth=20;
+        ctx.stroke();
+        ctx.restore();
+        /*var trunkGradient = context.createLinearGradient(-5,-50,5,-50);
+        trunkGradient.addColorStop(0,'#663300');
+        trunkGradient.addColorStop(0.4,'#996600');
+        trunkGradient.addColorStop(1,'#552200');
+        ctx.fillStyle=trunkGradient;
+        ctx.fillRect(-5,-50,10,50);
+        //接下来，创建垂直渐变，以用作树冠在树干上的投影
+        var canopyShadow = context.createLinearGradient(0,-50,0,0);
+        canopyShadow.addColorStop(0,'rgba(0,0,0,0.5)');
+        //方向垂直向下，渐变色在很短的距离内迅速渐变为完全透明，这段长度之外的树干上没有投影
+        canopyShadow.addColorStop(0.2,'rgba(0,0,0,0.0)');
+        //在树干上填充投影渐变
+        ctx.fillStyle=canopyShadow;
+        ctx.fillRect(-5,-50,10,50);*/
+    }
+</script>
+</body>
+</html>

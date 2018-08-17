@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scroll</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .wrap-ad{
+            margin-top: 10px;
+            height: 90px;
+            overflow: hidden;
+            position: relative;
+            background-color: #e0e0e0;
+        }
+        .wrap-ad-center{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .font_inner{
+            position: relative;
+            width: 100%;
+            background-color: #fff;
+        }
+        .wrap-ad li,.wrap-ad li a{
+            line-height: 30px;
+            text-align: left;
+            font-size: 12px;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap-ad">
+    <div class="wrap-ad-center">
+        <ul class="font_inner">
+            <li><a href='#'>平台贷后管理中心及接待地址</a></li>
+            <li><a href='#'>关于来访客户接待地点临时变更通知</a></li>
+            <li><a href='#'>平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告平台清盘方案公告</a></li>
+            <li><a href='#'>平台转型及暂停P2P业务公告</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        var scrollLoad={
+            obj:'.font_inner',
+            speed:40,
+            clickEndFlag:false,
+            init:function () {
+                var totalHeight=$(this.obj).height(),
+                    _this=this;
+                $(this.obj).height(totalHeight); //给ul赋值高度
+                var autoTimer=setInterval(function () {
+                    _this.clickEndFlag=false;
+                    _this.next(_this);
+                }, _this.speed);
+                $(this.obj+' li').hover(function () {
+                    if(_this.clickEndFlag){
+                        clearInterval(autoTimer);
+                    }
+                },function () {
+                    autoTimer=setInterval(function () {
+                        _this.clickEndFlag=false;
+                        _this.next(_this);
+                    }, _this.speed);
+                });
+            },
+            next:function (th) {
+                var _h=$(th.obj+' li:eq(0)').height();
+                $(th.obj).stop().animate({
+                    'marginTop': '-=1'
+                }, 0, function () {
+                    th.clickEndFlag = true; //图片走完才会true
+                    var stop = Math.abs(parseInt($(this).css("marginTop")));
+                    if(stop >= _h){
+                        $(this).find("li").slice(0, 1).appendTo($(this));
+                        $(this).css({ 'marginTop': 0 });
+                    }
+                });
+            }
+        };
+        scrollLoad.init();
+    });
+</script>
+</body>
+</html>

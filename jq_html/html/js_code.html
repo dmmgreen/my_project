@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证倒计时</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .code-box{
+            width: 400px;
+            margin: 50px auto;
+            font-size: 14px;
+            color: #666;
+            position: relative;
+            border-bottom:1px solid #d7d7d7;
+            line-height: 24px;
+            padding-bottom: 10px;
+        }
+        .code-box .code-label{
+            position: absolute;
+            left:0;
+            display: inline-block;
+            line-height: 35px;
+        }
+        .code-box .code-btn{
+            position: absolute;
+            right:0;
+            top:0;
+            display: inline-block;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border:1px solid #d7d7d7;
+            padding:8px;
+            cursor: pointer;
+            width: 100px;
+            text-align: center;
+            outline: none;
+        }
+        .code-box .gray{
+            background-color: #ccc;
+            color: #999;
+        }
+        .code-box .input-box{
+            padding-left: 60px;
+            padding-right: 100px;
+        }
+        .code-box .input-box .input{
+            display: block;
+            width: 100%;
+            padding: 10px 5px;
+            border:none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div class="code-box">
+    <label class="code-label">验证码</label>
+    <div class="input-box">
+        <input type="text" class="input" />
+    </div>
+    <input class="code-btn js-code" type="button" value="获取验证码"/>
+</div>
+
+<script>
+    document.querySelector(".js-code").onclick=function () {
+        var _this=this,
+            _time=null,
+            _count=60,
+            _classArr=_this.getAttribute("class");
+        _this.disabled="disabled";
+        clearInterval(_time);
+        _time=setInterval(function () {
+            _count--;
+            if(_count<=0){
+                _this.disabled=false;
+                _this.setAttribute("class",_classArr);
+                _this.value="获取验证码";
+                clearInterval(_time);
+            }else{
+                _this.value=_count;
+                _this.setAttribute("class",_classArr+" gray");
+            }
+        },1000);
+    }
+</script>
+</body>
+</html>

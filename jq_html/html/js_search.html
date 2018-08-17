@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .searchBox {
+            position: relative;
+            width: 240px;
+        }
+
+        .searchBox .search-input {
+            width: 100%;
+            display: block;
+            height: 30px;
+            border: 1px solid #d9d9d9;
+            border-radius: 3px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            outline: none;
+            text-indent: 1em;
+        }
+
+        .searchBox .search-select {
+            width: 100%;
+            display: none;
+            border: 1px solid #e1e1e8;
+            position: absolute;
+            background-color: #fff;
+            top:29px;
+            line-height: 30px;
+            text-indent: 1em;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<form action="#" method="post" name="searchForm">
+    <div class="searchBox">
+        <input type="text" id="search_input" class="search-input" />
+        <select name="selectList"  class="search-select" id="search_select" size="10">
+            <option value="1">abc</option>
+            <option value="2">acd</option>
+            <option value="3">adc</option>
+            <option value="4">a123</option>
+            <option value="5">b123</option>
+            <option value="6">c123</option>
+            <option value="7">d123</option>
+            <option value="8">哈哈</option>
+            <option value="9">哈哈哇</option>
+            <option value="10">娃哈哈</option>
+        </select>
+    </div>
+</form>
+<script>
+    function searchBox() {
+        this.Arr=[];//用于保存
+        this.defaults={
+            "inputId":"search_input",
+            "selectId":"search_select"
+        };
+        this.inputObj=document.getElementById(this.defaults.inputId);
+        this.selectObj=document.getElementById(this.defaults.selectId);
+        this.selectOption=this.selectObj.options;
+        this.saveArr=function () {
+            var that=this;
+            var lg=that.selectOption.length;
+            for(var i=0;i<lg;i++){
+                that.Arr[i]=that.selectOption[i].innerHTML+","+that.selectOption[i].getAttribute('value');
+            }
+        };
+        this.showList=function () {
+            this.selectObj.style.display='block';
+        };
+        this.hideList=function () {
+            this.selectObj.style.display='none';
+        };
+        this.setContent=function () {
+            var that=this;
+            that.selectObj.innerHTML="";
+            for(var i=0;i<that.Arr.length;i++){
+                var _text=that.Arr[i].split(',')[0],
+                    _val=that.Arr[i].split(',')[1];
+                //若找到包含txt的内容的，则添option
+                if(_text.indexOf(that.inputObj.value) >=0){
+                    var optionObj=new Option(_text,_val);
+                    that.selectObj.add(optionObj);
+                }
+            }
+        };
+        this.chooseSelected=function () {
+            var that=this,
+                _idx=that.selectObj.selectedIndex;
+            that.inputObj.value=that.selectObj[_idx].text;
+            that.hideList();
+        };
+        this.init=function () {
+            var that=this;
+            that.saveArr();
+            that.inputObj.onfocus=function () {
+                that.showList();
+            };
+            that.inputObj.onkeyup=function (e) {
+                that.setContent();
+                //按向下的键之后跳转到列表中
+                //焦点转移并且选中第一个值
+                if(e.keyCode===40){
+                    that.selectObj.focus();
+                    that.selectOption[0].setAttribute("selected","true");
+                    return false;
+                }
+            };
+            that.selectObj.onclick=function () {
+                that.chooseSelected();
+            };
+            that.selectObj.onkeyup=function (e) {
+                if(e.keyCode===40){
+                    that.selectObj.focus();
+                    that.selectOption[0].setAttribute("selected","true");
+                    return false;
+                }else if (event.keyCode === 38) { //向上键回到输入框
+                    var option = that.selectOption[that.selectObj.selectedIndex];
+                    if (option.previousSibling === null) {
+                        that.inputObj.focus();
+                    }
+                }
+            };
+            document.onclick=function (eve) {
+                var e=eve || window.event,
+                    elem=e.target || e.srcElement;
+                while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                    if (elem.id && (elem.id === that.defaults.selectId || elem.id === that.defaults.inputId)) {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                that.hideList();
+            }
+        };
+        this.init();
+    }
+    searchBox();
+</script>
+</body>
+</html>

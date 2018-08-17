@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>个数增加减少</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <style>
+        .numberBox{
+            display: inline-block;
+            line-height: 30px;
+        }
+        .numberBox .numberBox-btn{
+            display: inline-block;
+            border:1px solid #dcdcdc;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            width: 36px;
+            height: 36px;
+            vertical-align: middle;
+            font-size: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .numberBox .numberBox-btn.disabled{
+            color: #999;
+            background-color: #f1f1f1;
+        }
+        .numberBox .numberBox-input{
+            display: inline-block;
+            width: 72px;
+            height: 36px;
+            vertical-align: middle;
+            border:1px solid #dcdcdc;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="numberBox">
+    <span class="numberBox-btn js-numberBox-delete disabled" onselectstart="return false">-</span>
+    <input type="number" min="1" max="20" name="" class="numberBox-input"  value="1">
+    <span class="numberBox-btn js-numberBox-add" onselectstart="return false">+</span>
+</div>
+<div class="numberBox">
+    <span class="numberBox-btn js-numberBox-delete disabled" onselectstart="return false">-</span>
+    <input type="number" min="1" max="20" name="" class="numberBox-input"  value="1">
+    <span class="numberBox-btn js-numberBox-add" onselectstart="return false">+</span>
+</div>
+</body>
+<script>
+    function addAndDelete() {
+        $(document).on('click','.js-numberBox-delete',function () {
+            if($(this).hasClass('disabled')){
+                return;
+            }
+            var $par=$(this).parents('.numberBox'),
+                $input=$par.find('.numberBox-input'),
+                _val=parseInt($input.val())-1 || 1;
+            if(_val<=1){
+                $(this).addClass('disabled');
+            }
+            $input.val(_val);
+            $par.find('.js-numberBox-add').removeClass('disabled');
+        });
+        $(document).on('click','.js-numberBox-add',function () {
+            if($(this).hasClass('disabled')){
+                return;
+            }
+            var $par=$(this).parents('.numberBox'),
+                $input=$par.find('.numberBox-input'),
+                _val=parseInt($input.val())+1 || 1,
+                _max=$input.attr('max');
+            if(_val>=_max){
+                $(this).addClass('disabled');
+            }
+            $input.val(_val);
+            $par.find('.js-numberBox-delete').removeClass('disabled');
+        });
+        $(document).on('blur','.numberBox-input',function () {
+            var $par=$(this).parents('.numberBox'),
+                _max=parseInt($(this).attr('max')),
+                _min=parseInt($(this).attr('min')),
+                _val=parseInt($(this).val());
+            if(_val>_min){
+                $par.find('.js-numberBox-delete').removeClass('disabled');
+            }
+            if(_val<=_min){
+                $(this).val(_min);
+                $par.find('.js-numberBox-delete').addClass('disabled');
+            }
+            if(_val<_max){
+                $par.find('.js-numberBox-add').removeClass('disabled');
+            }
+            if(_val>=_max){
+                $(this).val(_max);
+                $par.find('.js-numberBox-add').addClass('disabled');
+            }
+        });
+    }
+    addAndDelete();
+</script>
+
+</html>
+

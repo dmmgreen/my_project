@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul, li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .clearfix:after {
+            content: '';
+            width: 0;
+            height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .searchSelectBox * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .searchSelectBox .searchPart, .searchSelectBox .selectPart {
+            width: 50%;
+            float: left;
+            border-right: 1px solid #e0e0e0;
+            padding: 0 2%
+        }
+
+        .searchSelectBox .searchPart .searchPart-input {
+            display: block;
+            width: 100%;
+        }
+
+        .searchSelectBox .searchPart .searchPart-selectBox,.searchSelectBox .selectPart .selectPart-ul {
+            display: block;
+            width: 100%;
+            max-height: 210px;
+            overflow-y: auto;
+            border: none;
+        }
+        .searchSelectBox .searchPart .searchPart-selectBox:focus{
+            border: none;
+            outline: none;
+        }
+        .searchSelectBox .searchPart .searchPart-selectBox option{
+            line-height: 30px;
+            padding: 8px 0;
+        }
+        .searchSelectBox .searchPart .searchPart-selectBox option:hover,.searchSelectBox .selectPart .selectPart-ul li:hover  {
+            background-color: #f9f9f9;
+            cursor: default;
+        }
+        .searchSelectBox .selectPart p {
+            margin-top: 0;
+        }
+        .searchSelectBox .selectPart .selectPart-ul li{
+            position: relative;
+            padding: 8px 0;
+        }
+        .searchSelectBox .selectPart .selectPart-ul li .selectPart-remove{
+            position: absolute;
+            right:10px;
+            color: #fff;
+            width: 15px;
+            height:15px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            top:10px;
+            line-height: 13px;
+            text-align: center;
+            display: none;
+         }
+        .searchSelectBox .selectPart .selectPart-ul li:hover .selectPart-remove{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="searchSelectBox clearfix">
+    <div class="searchPart">
+        <input type="text" class="searchPart-input" placeholder="请选择或输入">
+        <select class="searchPart-selectBox" size="7">
+        </select>
+    </div>
+    <div class="selectPart">
+        <p>
+            已选学校：
+            <span class="selectLen"></span>
+        </p>
+        <ul class="selectPart-ul"></ul>
+        <input type="hidden" class="selectPart-hidden">
+    </div>
+</div>
+<div class="searchSelectBox clearfix">
+    <div class="searchPart">
+        <input type="text" class="searchPart-input" placeholder="请选择或输入">
+        <select class="searchPart-selectBox" size="7">
+        </select>
+    </div>
+    <div class="selectPart">
+        <p>
+            已选学校：
+            <span class="selectLen"></span>
+        </p>
+        <ul class="selectPart-ul"></ul>
+        <input type="hidden" class="selectPart-hidden">
+    </div>
+</div>
+</body>
+<script src="../../css_html/js/jquery-1.9.1.min.js"></script>
+<script>
+    var datal = [{'1': '厦门大学'}, {'2': '厦门理工学院'}, {'3': '浙江大学'}];
+    var selected=[['2','3'],['厦门理工学院','浙江大学']];
+    ;(function ($, $w, $doc, undefined) {
+        var selectBox = function (ele, option) {
+            this.$element = $(ele);
+            this.defaults = {
+                's_input': 'searchPart-input',
+                's_search': 'searchPart-selectBox',
+                's_select': 'selectPart',
+                's_select_ul': 'selectPart-ul',
+                's_selectLen':'selectLen',
+                's_arr':'selectPart-hidden',
+                's_remove':'selectPart-remove',
+                'dataList': [],
+                'selectedArr':[]
+            };
+            this.options = $.extend({}, this.defaults, option);
+            /*定义全局*/
+            $this=this;
+            this.$sinput = this.$element.find('.'+this.options.s_input);
+            this.$ssearch = this.$element.find('.'+this.options.s_search);
+            this.$sselectUl = this.$element.find('.'+this.options.s_select_ul);
+            this.$sselectLen=this.$element.find('.'+this.options.s_selectLen);
+            //保存选中的数组内容
+            this.selectedArr=this.options.selectedArr.length>0 ? this.options.selectedArr[0] : [];
+            this.sarr=this.$element.find('.'+this.options.s_arr);
+            this.len=this.options.dataList.length;
+            /*全局初始*/
+            this.$sinput.val('').focus();
+            this.$sselectUl.empty();
+        };
+        selectBox.prototype = {
+            init: function () {
+                this.selectedFull();
+                this.dataFull(this.options.dataList);
+                this.searchMethod();
+                this.deleteMethod();
+            },
+            /*选中数据初始填充*/
+            selectedFull:function () {
+                var  _this=this;
+                if(this.options.selectedArr.length>0){
+                    var _arrs=this.options.selectedArr,
+                        _$sselectUl=_this.$sselectUl,
+                        _$sselectLen=_this.$sselectLen;
+                    for(var i=0;i<_arrs[0].length;i++){
+                        var  _selectVal=_arrs[0][i],
+                            _selectText=_arrs[1][i],
+                            _arr=_this.selectedArr;
+                        var item=$('<li data-value="'+_selectVal+'">'+_selectText+'<span class="'+_this.options.s_remove+'"></span></li>');
+                        _$sselectUl.append(item);
+                        _$sselectLen.html(_arr.length+'/'+_this.len);
+                        item.find('.'+_this.options.s_remove).on('click',function () {
+                            _this.deleteMethod(this);
+                        });
+                    }
+                }
+            },
+            /*模糊搜索*/
+            searchMethod: function () {
+                var _this = this,
+                    _$ssearch = this.$ssearch,
+                    _dataList = this.options.dataList;
+                this.$sinput.on('keyup', function () {
+                    /*
+                     *搜索点击上下按键
+                     * 13  回车键
+                     * 38  向上键
+                     * 40  向下键
+                     */
+                    var upKey = (event.which === 38) || (event.keyCode === 38),
+                        downKey = (event.which === 40) || (event.keyCode === 40);
+                    if (downKey) {
+                        _$ssearch.focus().find('option:eq(0)').attr('selected');
+                        _$ssearch.on('keyup',function (event) {
+                            var enterKey = (event.which === 13) || (event.keyCode === 13);
+                            if(enterKey){
+                                var _select=$(this).find("option:selected");
+                                _select.length>0 ? _this.addMethod(_select) : '';
+                            }
+                        });
+                        return ;
+                    }
+                    /*搜索*/
+                    var _val = $(this).val();
+                    var _filter = _dataList.filter(function (item) {
+                        for (var i in item) {
+                            if (item[i].indexOf(_val) > -1) {
+                                return item;
+                            }
+                        }
+
+                    });
+                    _this.dataFull(_filter);
+                });
+
+            },
+            /*数据填充   默认选中第一个*/
+            dataFull: function (data) {
+                var _this=this;
+                this.$ssearch.empty();
+                for (var i = 0; i < data.length; i++) {
+                    for (var k in data[i]) {
+                        var item=$('<option  value="' + k + '">' + data[i][k] + '</option>');
+                        this.$ssearch.append(item);
+                        item.on('click',function (event) {
+                            event.stopPropagation();
+                            _this.addMethod($(this));
+                        });
+                    }
+                }
+            },
+            addMethod:function (obj) {
+                var  _this=this,
+                    _$sselectUl=this.$sselectUl,
+                    _$sinput=this.$sinput,
+                    _sarr=this.sarr,
+                    _$sselectLen=this.$sselectLen,
+                    _dataList = _this.options.dataList,
+                    _select=obj,
+                    _selectVal=_select.val(),
+                    _selectText=_select.text(),
+                    _arr=_this.selectedArr;
+                if(_arr.length>0 && _selectVal && _this.contains(_arr,_selectVal)){
+                    return false;
+                }
+                _arr.push(_selectVal);
+                var item=$('<li data-value="'+_selectVal+'">'+_selectText+'<span class="'+_this.options.s_remove+'"></span></li>');
+                _$sselectUl.append(item);
+                _sarr.val(_arr);
+                _$sselectLen.html(_arr.length+'/'+_this.len);
+                item.find('.'+_this.options.s_remove).on('click',function () {
+                    _this.deleteMethod(this);
+                });
+                //重置搜索
+                _$sinput.val('');
+                _this.dataFull(_dataList);
+            },
+            /*删除选中数据*/
+            deleteMethod:function (obj) {
+                var  _this=this;
+                var _par=$(obj).parents('li'),
+                    _val=_par.attr('data-value'),
+                    _sarr=_this.sarr,
+                    _$sselectLen=_this.$sselectLen;
+                var _arr=_this.selectedArr.filter(function (item) {
+                    return item !== _val;
+                });
+                _this.selectedArr=_arr;
+                _sarr.val(_arr);
+                _$sselectLen.html(_arr.length+'/'+_this.len);
+                _par.remove();
+            },
+            /*元素是否包含在数组中*/
+            contains:function(arr, obj) {
+                var i = arr.length;
+                while (i--) {
+                    if (arr[i] === obj) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
+        //在插件中使用Banner对象
+        $.fn.selectBox = function (options) {
+            //创建实体
+            this.each(function () {
+                select = new selectBox(this, options);
+                //调用其方法
+                return select.init();
+            });
+            return this;
+        }
+    }(jQuery, window, document));
+    $('.searchSelectBox').selectBox({
+        dataList: datal,
+        selectedArr:selected
+    });
+</script>
+</html>

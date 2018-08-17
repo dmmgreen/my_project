@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电子书</title>
+    <style>
+        body{
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+        .clearfix:before, .clearfix:after {
+            content: "";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            min-width: 950px;
+            width: 90%;
+        }
+
+        .full-width-wrap {
+            background:#EEEEEE;
+            padding: 16px 0 60px 0;
+            width: 100%;
+            float:left;
+
+        }
+        .full-width-wrap-white {
+            padding: 15px 0 0 0;
+            width: 100%;
+            float:left;
+
+        }
+        .longText {
+            float:left;
+            font-size:14px;
+            line-height:24px;
+            font-family: league-gothic,sans-serif;
+            text-align:left;
+            width:600px;
+            height:590px;
+            background:#ffffff;
+
+        }
+        a.action-button {
+            background: none repeat scroll 0 0 #DADADA;
+            color: #CC0000;
+            padding: 8px 12px 9px;
+            text-decoration: none;
+        }
+        a.action-button:hover {
+            background: none repeat scroll 0 0 #CC0000;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        p{
+            margin:13px 0 0 0;
+
+        }
+        h2 {
+            font-size: 24px;
+            line-height: 26px;
+            margin: 0 0 12px;
+            font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+        }
+        .textify{
+            /*overflow:hidden;*/
+            font-family: Tahoma, Geneva, sans-serif;
+            font-size:13px;
+            overflow:hidden;
+            position:relative;
+
+        }
+
+        .textify img{
+            /*float : left;	*/
+        }
+        .textify_nav{
+            margin: 10px 0;
+            position:absolute;
+            bottom:0;
+        }
+        .textify_nav ul {
+            margin:0;
+            padding:0;
+        }
+        .textify_nav ul li:hover, .textify_nav  ul li.selected {
+            background-position:0 -15px;
+
+        }
+        .textify_nav ul li {
+            background-image: url("../image/textify_nav.png");
+            background-repeat: no-repeat;
+            float: left;
+            height: 15px;
+            list-style: none outside none;
+            margin-left: 3px;
+            margin-right: 3px;
+            width: 15px;
+            cursor:pointer;
+
+        }
+        .contentText{
+            margin-left:0;
+            float:left;
+
+        }
+        .longText img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 20px;
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: pre;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="full-width-wrap">
+    <div class="wrapper">
+        <div class="wrapContent bg1">
+           <div class="longText">
+               <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p>    <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p> <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p> <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p> <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p> <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p> <p><img src="http://sximg.uulian.com//static/image/20171121/1511255975114078.jpg" title="1511255975114078.jpg" alt="班徽02.jpg" style="display: block; margin: 10px 0px;"></p><p>1111111111111111111111111</p><p>2222222222222222222222</p><p>3333333333333333333</p><p>4444444444444</p><p>555555555</p><p>6666666</p>
+           </div>
+            <!--<div class="longText">
+            <p>
+                <img src="../image/banner1.png" />Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
+                incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+            <p><img src="../image/image1.jpg" /></p>
+            <p>
+                <iframe src="https://www.hao123.com/" frameborder="0" width="500px" height="600px"></iframe>
+            </p>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi
+                architecto beatae vitae dicta sunt, explicabo.</p>
+            <p>Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut
+                fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem
+                sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor
+                sit, amet, consectetur, adipisci v'elit, sed quia non numquam eius modi
+                tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+                laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae
+                consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+                [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis
+                praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias
+                excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa,
+                qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
+                cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id,
+                quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis
+                dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut
+                rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et
+                molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+                ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                doloribus asperiores repellat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
+                incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi
+                architecto beatae vitae dicta sunt, explicabo.</p>
+            <p>Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut
+                fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem
+                sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor
+                sit, amet, consectetur, adipisci v'elit, sed quia non numquam eius modi
+                tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+                laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae
+                consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+                [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis
+                praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias
+                excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa,
+                qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
+                cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id,
+                quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis
+                dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut
+                rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et
+                molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+                ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                doloribus asperiores repellat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor
+                incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat.</p>
+            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi
+                architecto beatae vitae dicta sunt, explicabo.</p>
+            <p>Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut
+                fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem
+                sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor
+                sit, amet, consectetur, adipisci v'elit, sed quia non numquam eius modi
+                tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+                laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum
+                iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae
+                consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+                [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis
+                praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias
+                excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa,
+                qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
+                cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id,
+                quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis
+                dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut
+                rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et
+                molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
+                ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                doloribus asperiores repellat.</p>
+        </div>-->
+            <!--<div class="longText">
+                <p style="text-align: center;"><br/></p>
+                <p style="text-align: center;"><img src="../image/1.jpg" title="1508812303856176.jpg" alt="test.jpg"
+                                                    width="371" height="255" style="width: 371px; height: 255px;"/></p>
+                <p class="reader-word-layer reader-word-s1-1"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-family: 宋体, "
+                   font-weight:="" position:="" word-break:="" -webkit-font-smoothing:="" text-shadow:="" 1px=""
+                   background-color:="" width:="" height:="" line-height:="" top:="" left:="" z-index:=""
+                   letter-spacing:=""><span style="font-size: 11px;">2013-2014</span></p>
+                <p class="reader-word-layer reader-word-s1-0 reader-word-s1-9"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-weight: 600; font-family: 宋体, "
+                   position:="" word-break:="" -webkit-font-smoothing:="" text-shadow:="" 1px="" background-color:=""
+                   width:="" height:="" line-height:="" top:="" left:="" z-index:="" letter-spacing:=""><span
+                        style="font-size: 11px;">学年第二学期电子商务课程教学总结</span></p>
+                <p class="reader-word-layer reader-word-s1-1"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-family: simsun; font-weight: 600; position: absolute; word-break: keep-all; -webkit-font-smoothing: antialiased; text-shadow: rgba(0, 0, 0, 0.00392157) 1px 1px 1px; background-color: rgb(255, 255, 255); width: 112px; height: 225px; line-height: 225px; top: 1297px; left: 7140px; z-index: 2;">
+                    <span style="font-size: 11px;">&nbsp;</span></p>
+                <p class="reader-word-layer reader-word-s1-1"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-family: 宋体, "
+                   font-weight:="" position:="" word-break:="" -webkit-font-smoothing:="" text-shadow:="" 1px=""
+                   background-color:="" width:="" height:="" line-height:="" top:="" left:="" z-index:=""
+                   letter-spacing:=""><span style="font-size: 11px;">2013-2014</span></p>
+                <p class="reader-word-layer reader-word-s1-0 reader-word-s1-9"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-weight: 600; font-family: 宋体, "
+                   position:="" word-break:="" -webkit-font-smoothing:="" text-shadow:="" 1px="" background-color:=""
+                   width:="" height:="" line-height:="" top:="" left:="" z-index:="" letter-spacing:=""><span
+                        style="font-size: 11px;">学年第二学期电子商务课程教学总结</span></p>
+                <p class="reader-word-layer reader-word-s1-1"
+                   style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-size: 225px; font-family: simsun; font-weight: 600; position: absolute; word-break: keep-all; -webkit-font-smoothing: antialiased; text-shadow: rgba(0, 0, 0, 0.00392157) 1px 1px 1px; background-color: rgb(255, 255, 255); width: 112px; height: 225px; line-height: 225px; top: 1297px; left: 7140px; z-index: 2;">
+                    &nbsp;</p>
+                <h3 style="line-height:150%"><a name="_Toc11723"></a><span
+                        style="font-family:黑体">1.Apache JMeter是什么</span></h3>
+                <p style="line-height:150%"><span style="font-family:黑体">　　　Apache JMeter 是Apache组织的开放源代码项目，是一个100%纯Java桌面应用，用于压力测试和性能测量。它最初被设计用于Web应用测试但后来扩展到其它测试领域。Apache JMeter可以用于对静态的和动态的资源（文件，Servlet，Perl脚本，Java对象，数据库和查询，FTP服务器或是其它资源）的性能进行测试。JMeter可以用于在服务器，网络或对象模拟繁重的负载来测试它们提供服务的受压能力或者分析不同压力条件下的总体性能情况。你可以使用JMeter提供的图形化界面，分析性能指标或者在高负载情况下测试你的服务器/脚本/对象。</span>
+                </p>
+                <h3 style="line-height:150%"><a name="_Toc1774"></a><span
+                        style="font-family:黑体">2.Apache JMeter能做什么</span></h3>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span
+                        style="font-family: 黑体">1.能够对HTTP和FTP服务器进行压力和性能测试，也可以对任何数据库进行同样的测试</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">2.完全的可移植性和100%纯Java</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">3.完全Swing的轻量级组件支持</span></p>
+                <p style="line-height:150%"><span
+                        style="font-family: 黑体">4.完全多线程框架允许通过多个线程并发取样和通过单独的线程组对不同的功能同时取样</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">5.精心的GUI设计允许快速操作和更精确的计时</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">6.缓存和离线分析/回放测试结果</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">7.高可扩展性:</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 可链接的取样器允许无限制的测试能力</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 各种负载统计表和可链接的计时器可供选择</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 数据分析和可视化插件提供了很好的可扩展性以及个性化</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 具有提供动态输入到测试的功能</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 支持脚本变成的取样器</span>
+                </p>
+                <h1 style="line-height:150%"><a name="_Toc20388"></a><span style="font-family:黑体">二．JMeter安装</span></h1>
+                <h3 style="line-height:150%"><a name="_Toc18963"></a><span style="font-family:黑体">1.安装环境</span></h3>
+                <p style="line-height:150%"><span style="font-family: 黑体">1.操作系统:window&nbsp; xp&nbsp; 7&nbsp; 8</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">2.安装包准备:</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family:黑体">最新的JMeter下载地址</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体"><a
+                        href="http://apache.dataguru.cn/jmeter/binaries/apache-jmeter-2.13.tgz"><span
+                        style="color:windowtext;text-underline:none">http://apache.dataguru.cn//JMeter/binaries/apache-JMeter-2.13.tgz</span></a></span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">Jdk根据不同的操作系统选择jdk版本</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体"><a
+                        href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"><span
+                        style="color:windowtext;text-underline:none">http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</span></a></span>
+                </p>
+                <h3 style="line-height:150%"><a name="_Toc10816"></a><span style="font-family:黑体">2.安装过程</span></h3>
+                <p style="line-height:150%"><span style="font-family: 黑体">1.安装JDK ，如我安装的地址为:C:\Program Files (x86)\Java\jdk1.8.0_45 </span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">2.设置环境变量:</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp; i 在用户变量中,新建变量名“JAVA_HOME”,变量值为:安装JDK的目录,如我的为:“C:\Program Files (x86)\Java\jdk1.8.0_45;” </span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp; ii 再新建变量名为“CLASSPATH”,变量值为:</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;;”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;&nbsp;&nbsp;&nbsp; iii 在系统变量的“Path”变量值后加上:“%JAVA_HOME%/bin;”</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">3.安装JMeter,解压“jakarta-JMeter-2.13.zip”到E盘根目录下:“E:/jakarta-JMeter-2.13”</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">4.在系统的CMD命令提示符下输入&quot;java&quot;，能看到相应帮助信息，说明jdk安装成功</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">5.运行JMeter: 直接打开 E:/jakarta-JMeter-2.13/bin/JMeter.bat 即可</span>
+                </p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <p style="line-height:150%"><span style="font-family: 黑体">&nbsp;</span></p>
+                <h1 style="line-height:150%"><a name="_Toc29624"></a><span
+                        style="font-family:黑体">三．JMeter页面和主要测试组件</span></h1>
+                <h3 style="line-height:150%"><a name="_Toc4103"></a><span
+                        style="font-family:黑体">测试计划(Test Plan ):</span></h3>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">用来描述一个性能测试，包含与本次性能测试所有相关的功能。也就说本的性能测试的所有内容是于基于一个计划的。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">下面看一下一个计划下面都有哪些主要的功能模块（右键单击“测试计划”弹出菜单）。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size:16px;line-height:150%;font-family:黑体"><img border="0" width="771" height="428"
+                                                                                    src="../image/1.jpg"
+                                                                                    word_img="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg"
+                                                                                    style="background:url(http://test.uutalent.net/school/web/assets/4fcff028/js/lang/zh-cn/images/localimage.png) no-repeat center center;border:1px solid #ddd"/></span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span></p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span></p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><strong><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span></strong>
+                </p>
+                <h3 style="line-height:150%"><a name="_Toc27880"></a><span
+                        style="font-family:黑体">线程 用户（Threads Users）</span></h3>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size:16px;line-height:150%;font-family:黑体"><img border="0" width="555" height="85"
+                                                                                    src="../image/1.jpg"
+                                                                                    word_img="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png"
+                                                                                    style="background:url(http://test.uutalent.net/school/web/assets/4fcff028/js/lang/zh-cn/images/localimage.png) no-repeat center center;border:1px solid #ddd"/></span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">虽然有三个添加线程组的选项，名字不一样， 创建之后，其界面是完全一样的。之前的版本只有一个线程组的名字。现在多一个setUp theread Group 与terDown Thread Group </span>
+                </p>
+                <p style="margin: 10px 0 10px 24px;line-height: 150%;background: white"><span
+                        style="font-size:15px;line-height:150%;font-family:黑体;color:#333333">1)<span
+                        style="font-variant-numeric: normal;font-stretch: normal;font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span>setup thread</span>
+                </p>
+                <p style="margin: 10px 0 10px 24px;line-height: 150%;background: white"><span
+                        style="font-family:黑体;color:#333333">2)<span
+                        style="font-variant-numeric: normal;font-stretch: normal;font-size: 9px;line-height: normal;font-family: &#39;Times New Roman&#39;">&nbsp; </span></span><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;group&nbsp; </span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">　　一种特殊类型的ThreadGroup的，可用于执行预测试操作。这些线程的行为完全像一个正常的线程组元件。不同的是，这些类型的线程执行测试前进行定期线程组的执行。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">2) teardown thread group.&nbsp; </span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">　　一种特殊类型的ThreadGroup的，可用于执行测试后动作。这些线程的行为完全像一个正常的线程组元件。不同的是，这些类型的线程执行测试结束后执行定期的线程组。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">　　可能你还是不太理他们与普通的线程组有什么不同。 如果您用过junit，想必你不会对setup ，teardown这2个字眼陌生。 即时每用过，也没关系。 熟悉loadrunner的应该知道，loadrunner的脚本除了action里是真正的脚本核心内容，还有初始化“环境”的初始化脚本和测试完毕后对应的清除信息的脚本块。 那么这里 setup thread group 和 teardown thread group 就是分别指这两部分。&nbsp; 其实从本质上来看，他们并没有什么不同。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">3) thread group(线程组).</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;&nbsp;&nbsp;&nbsp; 这个就是我们通常添加运行的线程。通俗的讲一个线程组,，可以看做一个虚拟用户组，线程组中的每个线程都可以理解为一个虚拟用户。线程组中包含的线程数量在测试执行过程中是不会发生改变的。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span>
+                </p>
+                <h3 style="line-height:150%"><a name="_Toc11532"></a><span
+                        style="font-family:黑体">测试片段（Test Fragment）</span></h3>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-family: 黑体;color: rgb(51, 51, 51)">&nbsp;</span><span
+                        style="font-size:16px;line-height:150%;font-family:黑体"><img border="0" width="507" height="65"
+                                                                                    src="../image/1.jpg"
+                                                                                    word_img="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png"
+                                                                                    style="background:url(http://test.uutalent.net/school/web/assets/4fcff028/js/lang/zh-cn/images/localimage.png) no-repeat center center;border:1px solid #ddd"/></span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">　　测试片段是在2.5版本之后新加的一个选项。</span>
+                </p>
+                <p style="margin: 10px 0;line-height: 150%;background: white"><span
+                        style="font-size: 15px;line-height: 150%;font-family: 黑体;color: rgb(51, 51, 51)">　　测试片段元素是控制器上的一个种特殊的线程组，它在测试树上与线程组处于一个层级。它与线程组有所不同，因为它不被执行，除非它是一个模块控制器或者是被控制器所引用时才会被执行。</span>
+                </p>
+                <p><br/></p>
+            </div>-->
+            <!--<div class="longText">
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    37.新的信念</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　两星期后，净饭王请<a href="http://m.liaotuo.org/remen/fotuo.html" class="keylink" target="_blank"
+                                  style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">佛陀</a>到宫里与家人吃饭。<a
+                        href="http://m.liaotuo.org/remen/sheli.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">舍利</a>弗也同时被邀请。乔答弥王后、耶输陀罗、难陀、孙陀莉难陀和罗睺罗全都在场。在一家人的亲切气氛下，佛陀给他们说教怎样随着呼吸观息，如何向心内细察自己的感受，和行禅<a
+                        href="http://m.liaotuo.org/remen/zuochan.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">坐禅</a>的方法。他一再强调，如果在日常<a
+                        href="http://m.liaotuo.org/remen/shenghuo.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">生活</a>里修习细察专念，他们便可以超越生活上的担忧、困恼和烦扰。
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　罗睺罗坐在舍利弗的身旁，把一只小手放在老<a href="http://m.liaotuo.org/remen/biqiu.html" class="keylink"
+                                             target="_blank"
+                                             style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">比丘</a>的手里。罗睺罗很喜欢舍利弗。
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　当佛陀和舍利弗要返回寺院时，一家人都一起陪同他们行到大门。看见佛陀要合掌向各人道别，难陀便替佛陀拿过钵来。当佛陀没有把钵拿回，难陀感到有点奇怪。于是，难陀只好跟着佛陀步回寺院，希望找个适当的机会把钵还给他。当他们抵达寺院，佛陀却问难陀可否在寺里住上一个星期，以能深入一些了解比丘的生活。难陀一向敬爱长兄，因此便欣然答应。其实他也是真的有点向往比丘的闲恬生活。一个星期过后，当佛陀又问他愿不愿意在佛陀的带导下<a
+                        href="http://m.liaotuo.org/remen/chujia.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">出家</a>数月，难陀也绝无犹疑的答应了。佛陀请舍利弗替难陀授戒和给他基本的指示。
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀曾与大王商讨过让难陀短期出家的事。大王也同意难陀虽然是个良好青年，但却缺乏了未来君主的坚毅性格和决心。佛陀认为他能帮助难陀建立清醒的思惟和坚决的意志。大王也十分赞同。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　可是，不到一个月，难陀便开始忆念他的未婚妻，美丽的阇罗芭达卡拉诺莉。虽然他极力隐藏他的思念，但佛陀很清楚的看到他的感受。一天，佛陀对他说:“如果你想达到你的目标，你首先必定要克服你对<a
+                        href="http://m.liaotuo.org/remen/ganqing.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">感情</a>的牵挂。把你自己全然役入<a
+                        href="http://m.liaotuo.org/remen/xiuxing.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">修行</a>和锻练你的心念吧。只有这样，你才可以成为一个服众的君主。”
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀又嘱舍利弗安排别让难陀到卡拉诺莉居住的地区乞食。难陀获悉后，心里真的对佛陀又感激又怨恨。他知道佛陀能看透他的思想和需要。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　罗睺罗很羡慕叔叔可以在寺院里居住。他也很渴望自己可以道样做。但当他请母亲给他允许时。母亲只抚着他的头，告诉他要待他长大很多之后才可似成为比丘。罗睺罗问他母亲怎样才可以快些长大时，她便告诉他要每天吃得好和做运动。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　一天，当耶输陀罗看到比丘们在王宫附近乞食时，她便对罗睺罗说道:“你为何不走到下面叫声佛陀?再问问他有什么要传授给你。”</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　罗睺罗跑到楼下。他很爱母亲，但也爱父亲。一直以来，他都只是和母亲一起而没有和父亲生活过一天。他很希望能像难陀那样，可以在佛陀身边。他跑过前院冲出南门，直至追上佛陀。佛陀笑着把手伸出来。虽然春天的阳光己开始猛然，但罗睺罗感到自己有父亲的爱荫庇保护。他抬头望着佛陀说:“在你身边很凉快啊。”</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　耶输陀罗在露台上看到他们。她知道佛陀会答应让罗睺罗这天跟他回到寺院。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　罗睺罗问佛陀:“您要传授些什么给我?”</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀说:“你来到寺院，我便亲自传给你。”</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　当他们回到寺院，舍利弗把自己的食物分一些给罗睺罗。罗睺罗静静的坐在佛陀和舍利弗中间吃着。他很高兴见到他的叔叔难陀。佛陀告诉他可以在舍利弗的房子过这一夜。所有的比丘对他都很热情，使他真想在寺院永远留下来。但舍利弗对他解释说，如果他想留下来，他首先要成为比丘。罗睺罗拖着舍利弗的手，又问他佛陀可否让他授戒。当他亲自问请佛陀时，佛陀点头首肯，便嘱舍利弗给这个男孩剃度。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　舍利弗最初还以为佛陀只是开玩笑。但当他见到佛陀的肃穆表情，他便这样问:“但<a href="http://m.liaotuo.org/remen/shizun.html"
+                                                              class="keylink" target="_blank"
+                                                              style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">世尊</a>，一个这么年轻的小孩，怎能当比丘？”
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀回答:“我们可以训练他，替他准备将来受<a href="http://m.liaotuo.org/remen/juzujie.html" class="keylink"
+                                              target="_blank"
+                                              style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">具足戒</a>。现在就先让他发愿成为<a
+                        href="http://m.liaotuo.org/remen/shani.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">沙弥</a>吧。他可以负责在坐禅时替比丘赶走来骚扰的乌鸦。”
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　舍利弗替罗睺罗剃头，又给他授<a href="http://m.liaotuo.org/remen/sanguiyi.html" class="keylink" target="_blank"
+                                       style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">三皈依</a>。他教罗睺罗持四戒:不杀、不盗、不<a
+                        href="http://m.liaotuo.org/remen/wangyu.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">妄语</a>、不喝酒。他拿自己一件衲衣，改成适合罗睺罗的大小，然后又教他怎样穿衲衣和持钵。罗睺罗看上去就像一个小型的比丘。他跟舍利弗睡在同一房子，每天又随着舍利弗到邻近，中午。虽然上了年纪的比丘都是日中一食，但舍利弗恐怕罗睺罗在这个当长的时期缺乏足够的营养，因此也给他晚上多吃一餐。在家的徒众也特此为小比丘带来乳汁和多一点的食物。
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　当罗睺罗披剃的消息传到宫中时，净饭王很不高兴。大王和王后都很挂念罗睺罗。他们起初只以为罗睺罗到寺院小住几天，他们没想到他竟然留在寺院当小沙弥。没有了孙儿在家，他们都感到异常寂寞。耶输陀罗则是悲喜交集。虽然她也十分惦念儿子，但却对儿子可以与父亲相隔多年后有机会亲近，感到很是安慰。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　一天下午，大王与王后及耶输陀罗一起乘御驾前往寺院。佛陀出来亲迎。难陀与罗睺罗也出来向他们问安。罗睺罗兴奋地跑到母亲的怀里。耶输陀罗把他亲切的拥抱。跟着，罗睺罗又过去亲亲祖父母。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　大王向佛陀鞠躬后，便用稍有不满的语气对他说:“你当初出家的时候，我已饱受焦熬。不久前，难陀也离开了我。我实在不可再忍受失去罗睺罗了。一个如我一般为<a
+                        href="http://m.liaotuo.org/remen/jiating.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">家庭</a>为重的男人，父子和爷孙的密切关系是非常重要的。你离开的时候，我皮如刀割。皮破之后，刀已割到肉里。肉烂之后，现在刀已入骨。我真认为你要对你的所为重新考虑。我希望你将来未获人家父母批准，便不应替小童披剃啊。”
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀尽量对大王安慰，重覆解释<a href="http://m.liaotuo.org/remen/wuchang.html" class="keylink" target="_blank"
+                                       style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">无常</a><a
+                        href="http://m.liaotuo.org/remen/wuwo.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">无我</a>的真理。他提醒大王唯有不断修习觉察专念，才是摆脱<a
+                        href="http://m.liaotuo.org/remen/tongku.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">痛苦</a>之门。现在难陀和罗睺罗都有这个机会了。佛陀劝喻他的父亲应该替他们高兴，更鼓励他自己也在日常生活中好好修习觉察之道以达至真正快乐。
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　大王觉得舒服了一点。乔答弥和耶输陀罗也都被佛陀这番说话安定过来。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　当天稍后，佛陀对舍利弗说:“从现在开始，我们没有小童父母的批准，不要接纳他们加入僧团。请在僧规里笔记下来。”</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　时间过得很快。佛陀和他的僧团已在释迦国逗留了六个多月。比丘的数目已增加至五百小而在家众更难计其数。净饭王又再给僧伽一块土地建寺。这就是在城北悉达多大子的故宫以及围绕着那里的敞大园林。舍利弗尊者安排了一众比丘在那里组织僧居。这新建的精舍替释迦国奠下了道场的基础。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀希望可以赶回竹林精舍结夏安居，因为他曾这样答应那里的比丘和频婆娑罗王。佛陀离开前，净饭王宴请他最后一次，并希望他能再为一家人和释迦族的成员<a
+                        href="http://m.liaotuo.org/remen/shuofa.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">说法</a>。</p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　佛陀利用这次开示说教如何在政治上行道。他说大道能光明政界，帮助当政的入带来社会的平等与公正。他说:“修行大道会令你增长<a
+                        href="http://m.liaotuo.org/remen/zhihui.html" class="keylink" target="_blank"
+                        style="margin: 0px; padding: 0px; text-decoration: none; color: rgb(160, 0, 0);">智慧</a>和慈悲，因而使你对民众治理得更好。你全不需要靠暴力，都可以为国家带来和平幸福。你不用对人施行处决、酷刑或囚禁，也不需要充供财物。这并不只是一种理想，而是真正可以实现的。”
+                </p>
+                <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; font-family: &#39;Microsoft YaHei&#39;, 微软雅黑; font-size: 21.2px; letter-spacing: 0.7px; line-height: 42.4px; white-space: normal;">
+                    　　当一个政治家具备足够的智慧去了解和爱，他才可以看到苦困、悲哀和压迫的真相。这样的人，才能有方法改革政制以拉平贫富的悬殊和终止施压。</p>
+
+            </div>-->
+            <!--<div class="longText">
+                <p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span></span></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span></span></span></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);">电子商务法概述</span></span></span></span></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://test-sxgl.uulian.com.cn/static/image/20170711/1499753190879825.jpg" title="1499753190879825.jpg" alt="a0000071324.jpg"/></span></span></span></span></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; line-height: 24px; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://test-sxgl.uulian.com.cn/static/../image/20170711/1499753190879825.jpg" title="1499753190879825.jpg" alt="a0000071324.jpg"/></span></span></span></span></span></p></div>-->
+            <!--<div class="longText">
+                <p><img src="http://test-sxgl.uulian.com.cn/static/../image/20170711/1499752253587650.jpg" title="1499752253587650.jpg" alt="a0000071324.jpg"/></p><p>2.1 电子商务主体概述</p><p>2.2 电子商务交易平台建立与运行法律制度</p><p>2.3 电子商务交易方的确认的法律制度</p><p><br/></p></div>-->
+            <!--<div class="longText">
+                <p>ACF，Access Control Filter, 访问控制过滤器的意思。</p><p>所谓的访问控制过滤器？字面上来理解就是访问授权呗，对一些具体的操作设定一些规则进行权限控制。</p><p>当然，这里的【操作】即是指控制器的action了。</p><p>前面我们添加新用户的时候，不知你可有疑问：为什么我们访问主页（site/index）就让我们登录，但是我们在未登录的时候却可以直接添加用户，访问用户列表呢？</p><p>下面就请我们今天的主角 ACF 登场，噼里啪啦的鼓掌...</p><p>从程序的角度来讲，ACF 其实就是 yii\filters\AccessControl, 它比较适合简单的场景，面对的对象便是控制器的action。</p><p>对于一些复杂的验证方式，我们后面会说到 Role Based Access Control （rbac）。</p><p>我们接着刚刚抛出的疑问继续学习。</p><p>有同学又要质疑了，创建新用户的操作，肯定要后台管理员才可以进行操作，包括列表页等一系列操作，没登录肯定不能访问啊啊啊。</p><p>不急，下面我们就看看如何通过ACF去对 user-backend/* 的系列操作进行授权限制！</p><p>打开 backend\controller\SiteController.php 我们看到这样一段代码</p><pre class="hljs php">public&nbsp;function&nbsp;behaviors(){&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;access&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;class&#39;&nbsp;=&gt;&nbsp;AccessControl::className(),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;rules&#39;&nbsp;=&gt;&nbsp;[
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&#39;login&#39;,&nbsp;&#39;error&#39;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;allow&#39;&nbsp;=&gt;&nbsp;true,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&#39;logout&#39;,&nbsp;&#39;index&#39;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;allow&#39;&nbsp;=&gt;&nbsp;true,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;roles&#39;&nbsp;=&gt;&nbsp;[&#39;@&#39;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;verbs&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;class&#39;&nbsp;=&gt;&nbsp;VerbFilter::className(),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;logout&#39;&nbsp;=&gt;&nbsp;[&#39;post&#39;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;];
+        }</pre><p><br/></p><p><img src="../image/banner1.png" title="1508308999454566.png" alt="1.png" /></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p><br/></p></div>-->
+            <!--<div class="longText">
+                <p><img src="../image/image1.jpg" title="../image/361.png" alt="1.png" /><img src="../image/361.png" title="1508309062111717.png" alt="1.png" style="width:100px;height:50px;"/></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p><br/></p></div>-->
+            <!--<div class="longText">
+                <p>1测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章</p><p><br/></p><p><br/></p><p><br/></p><p>2测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章测试考试课程第二章</p></div>-->
+            <!--<div class="longText">
+                <p><img src="../image/1505725449633800.jpg" title="1505725449633800.jpg" alt="timg (3).jpg" width="626" height="623" style="width: 626px; height: 623px;"/></p><p><img src="../image/1505725509868826.jpg" title="1505725509868826.jpg" alt="timg (4).jpg" width="675" height="346" style="width: 675px; height: 346px;"/></p></div>-->
+            <!-- <div class="longText">
+                 <p><img src="../image/361.png" title="1508309062111717.png" alt="1.png"/><img src="../image/361.png" title="1508309062111717.png" alt="1.png" style="width: 260px; height: 405px;" width="260" height="405"/></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p><br/></p></div>-->
+            <!--<div class="longText">
+                <p>ACF，Access Control Filter, 访问控制过滤器的意思。</p><p>所谓的访问控制过滤器？字面上来理解就是访问授权呗，对一些具体的操作设定一些规则进行权限控制。</p><p>当然，这里的【操作】即是指控制器的action了。</p><p>前面我们添加新用户的时候，不知你可有疑问：为什么我们访问主页（site/index）就让我们登录，但是我们在未登录的时候却可以直接添加用户，访问用户列表呢？</p><p>下面就请我们今天的主角 ACF 登场，噼里啪啦的鼓掌...</p><p>从程序的角度来讲，ACF 其实就是 yii\filters\AccessControl, 它比较适合简单的场景，面对的对象便是控制器的action。</p><p>对于一些复杂的验证方式，我们后面会说到 Role Based Access Control （rbac）。</p><p>我们接着刚刚抛出的疑问继续学习。</p><p>有同学又要质疑了，创建新用户的操作，肯定要后台管理员才可以进行操作，包括列表页等一系列操作，没登录肯定不能访问啊啊啊。</p><p>不急，下面我们就看看如何通过ACF去对 user-backend/* 的系列操作进行授权限制！</p><p>打开 backend\controller\SiteController.php 我们看到这样一段代码</p><pre class="hljs php">public&nbsp;function&nbsp;behaviors(){&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;access&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;class&#39;&nbsp;=&gt;&nbsp;AccessControl::className(),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;rules&#39;&nbsp;=&gt;&nbsp;[
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&#39;login&#39;,&nbsp;&#39;error&#39;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;allow&#39;&nbsp;=&gt;&nbsp;true,
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&#39;logout&#39;,&nbsp;&#39;index&#39;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;allow&#39;&nbsp;=&gt;&nbsp;true,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;roles&#39;&nbsp;=&gt;&nbsp;[&#39;@&#39;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;verbs&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;class&#39;&nbsp;=&gt;&nbsp;VerbFilter::className(),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;actions&#39;&nbsp;=&gt;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#39;logout&#39;&nbsp;=&gt;&nbsp;[&#39;post&#39;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],
+        &nbsp;&nbsp;&nbsp;&nbsp;];
+        }</pre><p><br/></p><p><img src="../image/361.png" title="1508308999454566.png" alt="1.png" style="width: 238px; height: 212px;" width="238" height="212"/></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p>这是一套非常适合小白进阶的yii2教程。</p><p>为什么要分享这套教程？</p><p>首先，包括我在内，当初学yii入门确实是个问题。为什么学习门槛那么高呢？一来无人指导，二来没有好的教程，只能自己盯着文档琢磨，真的是各种乱撞，走了很多弯路！</p><p>为什么要写文档式的教程而不直接录视频呢？</p><p>很多人可能都有一个错觉，看视频进步的更快。对于实际工作的人来说，白天要上班，晚上要加班，加班回去之后要陪老婆孩子，在之后打打游戏，哪里有充足的时间提升自我？更重要的是，我觉得我的文章写的很好啊，很清晰易懂，大部分还都是案例，上个班当作查问题一样一个案例就敲完了，也明白其中原理了，为啥你还要看视频呢？对吧，看我的文档足够了！况且市面上你也找不到这么好的教程。</p><p>yii2文档式教程的特点？</p><p><strong>大写的中文，幽默易懂，各种完整实例。</strong></p><p>yii2实战系列教程目前仍然在持续更新中，覆盖了配置、gii、debug、登录注册、acf、rbac、主题、行为、事件、收发邮件、modal、widget、restful、OAuth2、Cache、AssetBundle、Sql等等主要知识，快速帮助初学者掌握yii2的精髓，并能应用于实际开发中！</p><p><strong>目前实战系列的教程不完全免费，除前7篇和后续每一章节前半部分免费，其他均为收费课程。yii2系列的所有文章，定价<strong><strong><strong>¥</strong></strong></strong>49，限价<strong><strong>¥</strong></strong>28哦</strong></p><p><br/></p></div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/page.js"></script>
+<script>
+    $(document).ready(function () {
+        var _width = $(window).width() * 0.4 > 450 ? Number($(window).width() * 0.4) : 450,
+            _height = ($(window).height() * 0.8) > 590 ? Number($(window).height() * 0.8) - 40 : 550;
+        $('.longText').css({
+            'width': _width,
+            'height': _height
+        }).textify({
+            numberOfColumn: 1,
+            margin: 20,
+            padding: 50,
+            width: _width,
+            height: _height,
+            showNavigation: true,
+            textAlign: 'justify'
+        });
+    });
+</script>
+</html>

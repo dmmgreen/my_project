@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border:0;
+        }
+        p {
+            font:normal 12px/17px Arial;
+        }
+        td {
+            font:normal 12px/17px Arial;
+            padding:2px;
+            width:100px;
+        }
+        th {
+            font:bold 12px/17px Arial;
+            text-align:left;
+            padding:4px;
+            border-bottom:1px solid #333;
+            width:100px;
+        }
+        .even {
+            background:#FFF38F;
+        }
+        /* 偶数行样式*/
+        .odd {
+            background:#FFFFEE;
+        }
+        /* 奇数行样式*/
+        .selected {
+            background:#FF6500;
+            color:#fff;
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    <br> 筛选：
+    <input id="filterName" name="filterName">
+    <span class="search">搜索</span>
+    <br>
+</p>
+
+<table>
+    <thead>
+    <tr><th>姓名</th><th>性别</th><th>暂住地</th></tr>
+    </thead>
+    <tbody>
+    <tr><td>SYJ</td><td>男</td><td>河北秦皇岛市</td></tr>
+    <tr><td>李四</td><td>女</td><td>北京北京市</td></tr>
+    <tr><td>王五</td><td>男</td><td>河北秦皇岛市</td></tr>
+    <tr><td>赵六</td><td>男</td><td>河北唐山市</td></tr>
+    <tr><td>张三</td><td>男</td><td>内蒙古呼和浩特市</td></tr>
+    <tr><td>王六</td><td>女</td><td>内蒙古包头市</td></tr>
+    <tr><td>二狗</td><td>男</td><td>北京北京市</td></tr>
+    <tr><td>李字</td><td>女</td><td>河北秦皇岛市</td></tr>
+    <tr><td>二蛋</td><td>男</td><td>东北辽宁省</td></tr>
+    </tbody>
+</table>
+
+</body>
+<script src="../../css_html/js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function() {
+        $('.search').on('click', function() {
+            $('table tbody tr').hide()
+                .filter(":contains('" + ($('#filterName').val()) + "')")
+                .show();
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        ul,ol{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .cascader-box{
+            width: 200px;
+            position: relative;
+        }
+        .cascader-input{
+            position: relative;
+            display: inline-block;
+            padding: 4px 7px;
+            width: 100%;
+            height: 28px;
+            font-size: 12px;
+            color: rgba(0,0,0,.65);
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .cascader-input input{
+            display: block;
+            position:absolute;
+            left:0;
+            top:0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .cascader-input span{
+            display: inline-block;
+        }
+        .cascader-menu{
+            width: 450px;
+            height: 180px;
+            display: none;
+            border-right: 1px solid #e9e9e9;
+            position: absolute;
+            z-index: 10000;
+        }
+        .cascader-menu ul{
+            float: left;
+            width: 150px;
+            height: 100%;
+            overflow-y: auto;
+            border-top: 1px solid #e9e9e9;
+            border-left: 1px solid #e9e9e9;
+            border-bottom: 1px solid #e9e9e9;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        .cascader-menu ul li{
+            padding: 7px 8px;
+            font-size: 12px;
+            color: #999999;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+        .cascader-menu ul li.active{
+            background-color: #0099ff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="cascader-box">
+        <span class="cascader-input">
+            <span>请选择您主营的品类名称</span>
+            <input type="text" placeholder="请选择您主营的品类名称" />
+        </span>
+        <div class="cascader-menu">
+            <ul></ul>
+            <ul></ul>
+            <ul></ul>
+        </div>
+    </div>
+
+    <div class="cascader-box" style="margin-top: 300px;">
+        <span class="cascader-input">
+            <span>请选择您主营的品类名称</span>
+            <input type="text" placeholder="请选择您主营的品类名称2" />
+        </span>
+        <div class="cascader-menu">
+            <ul></ul>
+            <ul></ul>
+            <ul></ul>
+        </div>
+    </div>
+</body>
+<script>
+    (!function ($) {
+        $('.cascader-input').on('click',function () {
+            var _this=this;
+            $.ajax({
+                url:'data/product.json',
+                success:function (data) {
+                    new cascader(data,$(_this));
+                }
+            });
+        });
+        function cascader(data,_this) {
+            this.options={
+                obj:_this,
+                canClick:true,
+                canClose:false,
+                data:data,
+                par1:0,
+                par2:0,
+                par3:0,
+                cname1:'',
+                cname2:'',
+                cname3:'',
+                menu:'.cascader-menu'
+            };
+            this.init();
+        }
+        cascader.prototype={
+            init:function () {
+                this.initMenu();
+                this.chooseItem();
+            },
+            initMenu:function () {
+                var _html='',
+                    _this=this.options.obj;
+                if(this.options.data){
+                    $.each(this.options.data,function (i, val) {
+                        _html+='<li value="'+val.id+'">'+val.name+'</li>';
+                    })
+                }
+                _this.next(this.options.menu).show().find('ul').html('');
+                _this.next(this.options.menu).find('ul:first').html(_html);
+            },
+            chooseItem:function () {
+                var data=this.options.data,
+                    _this=this.options.obj,
+                    _par1=this.options.par1,
+                    _par2=this.options.par2,
+                    _par3=this.options.par3,
+                    _name1=this.options.cname1,
+                    _name2=this.options.cname2,
+                    _name3=this.options.cname3,
+                    _menus=this.options.menu;
+                $('body').on('click',this.options.menu+' li',function () {
+                    var _index=$(this).parent().index();
+                    var _val=$(this).attr('value');
+                    var _menu=$(this).parents(_menus);
+                    $(this).addClass('active');
+                    var _name=$(this).text();
+                    $(_menu).find('ul:gt('+_index+')').html('');
+                    $.each(data,function (i, val) {
+                        if(_index==0 && val.id==_val){
+                            var _html='';
+                            _par1=_val;
+                            _name1=_name;
+                            $.each(val.child,function (i, val) {
+                                _html+='<li value="'+val.id+'">'+val.name+'</li>';
+                            });
+                            $(_menu).find('ul:eq('+(_index+1)+')').html(_html);
+                        }
+                        if(_index==1 && _par1==val.id){
+                            var _html='';
+                            _par2=_val;
+                            _name2=_name;
+                            $.each(val.child,function (i, val) {
+                                if(_par2==val.id){
+                                    $.each(val.child,function (i, val) {
+                                        _html+='<li value="'+val.id+'">'+val.name+'</li>';
+                                    });
+                                    $(_menu).find('ul:eq('+(_index+1)+')').html(_html);
+                                }
+
+                            });
+                        }
+                    });
+                    if(_index==2){
+                        _par3=_val;
+                        _name3=_name;
+                        $(_menu).prev().find('span,input').text(_name1+'/'+_name2+'/'+_name3).attr('value',_par3);
+                        $(_menu).hide();
+                    }
+                })
+            }
+        }
+    })(jQuery);
+</script>
+</html>

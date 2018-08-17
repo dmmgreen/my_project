@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/jquery-1.9.1.min.js"></script>
+  <script src="../js/jquery.validate.min.js"></script>
+  <style>
+    .error{
+      color: #ff2400;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .form-line{
+      margin-bottom: 10px;
+    }
+    .form-line label{
+      display: inline-block;
+      min-width: 80px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<form action="" id="regform">
+  <div class="form-line">
+    <label>姓名：</label>
+    <input type="text" name="username" />
+  </div>
+  <div class="form-line">
+    <label>性别：</label>
+    <input type="radio" name="sex" value="男" checked /> 男
+    <input type="radio" name="sex" value="女" /> 女
+  </div>
+  <div class="form-line">
+    <label>身份证：</label>
+    <input type="text" name="cardId" />
+  </div>
+  <div class="form-line">
+    <label>手机号：</label>
+    <input type="text" name="mobile" />
+  </div>
+  <div class="form-line">
+    <label>电话号码：</label>
+    <input type="text" name="phone" />
+  </div>
+  <div class="form-line">
+    <label>邮政编码：</label>
+    <input type="text" name="postCode" />
+  </div>
+  <input type="submit" />
+</form>
+<script src="../js/additional-methods.js"></script>
+<script>
+  $('#regform').validate({
+      /*errorPlacement:function (error,element) {
+          $('<span class="span-error"/>').appendTo(element.parents('.form-line'));
+          error.appendTo(element.next());
+      },*/
+      rules:{
+          'username':{
+              required:true
+          },
+          'cardId':{
+              isIdCardNo:true
+          },
+          'mobile':{
+              isMobile:true
+          },
+          'phone':{
+              isPhone:true
+          },
+          'postCode':{
+              isPostCode:true
+          }
+      },
+      messages:{
+          'username':{
+              required:'用户名不能为空'
+          }
+      },
+      submitHandler:function (form) {
+          console.log(form);
+          return false;
+      }
+  })
+</script>
+</body>
+</html>

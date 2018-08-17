@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+    <style>
+        .white-box{
+            background-color: #fff;
+            padding: 15px 30px;
+            color: #333;
+            font-size: 16px;
+        }
+        .class-select-box-left{
+            width: 330px;
+            height: 360px;
+            margin-right: 35px;
+            border:1px solid #e1e1e8;
+            float: left;
+        }
+        .class-select-box-right{
+            width: 280px;
+            height: 360px;
+            border:1px solid #e1e1e8;
+            float: left;
+        }
+        .class-select-box-title{
+            font-size: 14px;
+            color: #fff;
+            line-height: 30px;
+            height: 30px;
+            background-color: #507e8f;
+            text-indent: 20px;
+        }
+        .class-select-box-right .class-select-box-title{
+            background-color: #4bc3c2;
+        }
+        .class-select-box-cont{
+            padding: 15px 0;
+            height: 300px;
+            overflow-y: auto;
+            line-height: 36px;
+            font-size: 14px;
+        }
+        .class-select-box-cont li{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            padding: 0 15px;
+        }
+        .class-select-box-cont li.active{
+            background-color: #ecf5f5;
+        }
+        .class-select-btn{
+            display: inline-block;
+            border: 1px solid #507e8f;
+            color: #507e8f;
+            padding: 3px 10px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            line-height: 20px;
+            margin-left: 20px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .class-select-cont-itembox{
+            padding: 0 15px;
+        }
+        .class-select-cont-item{
+            position: relative;
+            background-color: #e9e9e9;
+            color: #666;
+            display: inline-block;
+            padding: 0 14px;
+            margin-top: 12px;
+            margin-right: 12px;
+        }
+        .class-select-cont-item .close-x{
+            position: absolute;
+            top:0;
+            left:5px;
+            line-height: 14px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .like-radio-span{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border:1px solid #bfbfbf;
+            vertical-align: middle;
+            margin-right: 20px;
+        }
+        .active .like-radio-span{
+            background-color: #4bc3c2;
+            border-color:#4bc3c2;
+            position: relative;
+        }
+        .active .like-radio-span:after{
+            position: absolute;
+            left:4px;
+            top:0;
+            content:"";
+            width: 6px;
+            height: 10px;
+            border-right:2px solid #fff;
+            border-bottom:2px solid #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+<div class="white-box">
+    <div class="class-select-box clearfix">
+    <div class="class-select-box-left">
+        <div class="class-select-box-title">
+            已选教师
+        </div>
+        <div class="class-select-box-cont">
+            <p>
+                <a class="class-select-btn" href="javascript:void(0);">全部撤销</a>
+            </p>
+            <div class="class-select-cont-itembox">
+            </div>
+        </div>
+    </div>
+    <div class="class-select-box-right">
+        <div class="class-select-box-title">
+            可选教师
+        </div>
+        <ul class="class-select-box-cont">
+            <li class="select-all">
+                <span class="like-radio-span active"></span>
+                <span class="text">全选</span>
+            </li>
+            <li class="select-one" data-rvalue="1">
+                <span class="like-radio-span"></span>
+                <span class="text">李晓华1</span>
+            </li>
+            <li class="select-one" data-rvalue="2">
+                <span class="like-radio-span"></span>
+                <span class="text">李晓华2</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+<script>
+    !function ($,win,doc,undefined) {
+        var classSelect=function (ele, option) {
+            this.element =ele;
+            this.leftBox =$(this.element).find('.class-select-box-left');
+            this.leftItemBox =$(this.element).find('.class-select-cont-itembox');
+            this.rightBox=$(this.element).find('.class-select-box-right');
+            this.selectAll=$(this.element).find('.select-all');
+            this.selectOne=$(this.element).find('.select-one');
+            this.resetBtn =$(this.element).find('.class-select-btn');
+            this.defaults={};
+            this.options =$.extend({},this.defaults,option);
+            this.init();
+        };
+        classSelect.prototype={
+            init:function () {
+                this.selectSingle();
+                this.selectA();
+                this.closeAll();
+            },
+            /*单选，选中则添加到左边部分*/
+            selectSingle:function () {
+                var that=this;
+                this.selectOne.on('click',function () {
+                    that.select(this);
+                });
+            },
+            /*全选，选中则添加到左边部分*/
+            selectA:function () {
+                var that=this;
+                this.selectAll.on('click',function () {
+                    that.selectOne.each(function () {
+                        that.select(this);
+                    });
+                    $(this).fadeOut();
+                });
+            },
+            /*选中*/
+            select:function (e) {
+                var that=this;
+                var _val=$(e).attr('data-rvalue'),
+                    _txt=$(e).find('.text').text();
+                var $item=$('<div class="class-select-cont-item" data-lvalue="'+_val+'"><span class="close-x">x</span>'+_txt+'</div>');
+                that.leftItemBox.append($item);
+                that.leftBox.append('<input type="hidden" data-input="'+_val+'" value="'+_val+'" name="selectTeacher[]">');
+                $(e).fadeOut();
+                /*添加关闭操作*/
+                $item.find('.close-x').on('click',function () {
+                    that.close(this);
+                });
+            },
+            /*点击关闭按钮，还原到可选状态*/
+            close:function (e) {
+                var $par=$(e).parents('.class-select-cont-item'),
+                    _val=$par.attr('data-lvalue');
+                $par.remove();
+                $('[data-rvalue="'+_val+'"]').fadeIn();
+                $('[data-input="'+_val+'"]').remove();
+            },
+            /*全部撤销*/
+            closeAll:function () {
+                var that=this;
+                this.resetBtn.on('click',function (e) {
+                    that.leftItemBox.html('');
+                    that.selectAll.fadeIn();
+                    that.selectOne.fadeIn();
+                    $('[name="'+that.options.inputName+'[]"]').remove();
+                });
+            }
+        };
+        $.fn.classSelectedBox=function (options) {
+            this.each(function () {
+                return new classSelect(this,options);
+            });
+        }
+    }(jQuery,window,document);
+    $('.class-select-box').classSelectedBox();
+</script>
+</body>
+</html>

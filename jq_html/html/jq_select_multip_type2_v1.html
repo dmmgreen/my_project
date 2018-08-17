@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .js-select-box{
+            position: relative;
+            z-index:1;
+            width: 620px;
+            border:1px solid #e1e1e8;
+            padding: 0 15px;
+            min-height:30px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .js-selected{
+            width: 100%;
+            line-height:30px;
+            overflow: hidden;
+            display: block;
+            color: #666;
+            min-height:30px;
+            cursor: pointer;
+        }
+        .js-selected .js-default-text{
+            color: #666;
+        }
+        .js-selected a{
+            background-color: #E8E8E8;
+            color: rgba(0,0,0,0.6);
+            margin: 3px;
+            padding: 0 5px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .js-select-box ul{
+            position: absolute;
+            left:-1px;
+            z-index:10000;
+            width: 100%;
+            max-height:210px;
+            overflow-y: auto;
+            border:1px solid #e1e1e8;
+            border-top:none;
+            line-height:30px;
+            list-style-type: none;
+            background-color:#fff;
+            margin:0;
+            padding:0;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            display: none;
+
+        }
+        .js-select-box ul li{
+            line-height:28px;
+            padding-left:20px;
+            margin: 3px 0;
+            cursor:pointer;
+            white-space: nowrap;
+        }
+        .js-select-box ul li:hover{
+            background: rgba(0,0,0,.03);
+            color: rgba(0,0,0,.95);
+        }
+    </style>
+</head>
+<body>
+<div class="form-line">
+    <div class="js-select-box">
+        <div class="js-selected">
+            <div class="js-default-text">--请选择班级--</div>
+        </div>
+        <ul>
+            <li data-id="1">2016级-uu移动app开发实战教学</li>
+            <li data-id="2">2017级-uu移动app开发实战教学</li>
+            <li data-id="3">2018级-uu移动app开发实战教学</li>
+        </ul>
+    </div>
+</div>
+<div class="form-line" style="margin-top: 20px;margin-left:20px;">
+    <div class="js-select-box">
+        <div class="js-selected">
+            <div class="js-default-text">--请选择班级--</div>
+        </div>
+        <ul>
+            <li data-id="11">11</li>
+            <li data-id="22">22</li>
+            <li data-id="33">33</li>
+        </ul>
+    </div>
+</div>
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script>
+var selecteded=[{'3':'2018级-uu移动app开发实战教学'}];
+    ;(function ($) {
+            var SelectBox=function (ele,opt) {
+                this.$element=$(ele);
+                this.defaults={
+                    slideTime:100,
+                    selectedArr:[]
+                };
+                this.options=$.extend({},this.defaults,opt);
+            };
+            SelectBox.prototype={
+                init:function (_all) {
+                    this.showBox(_all);
+                    this.initSelected();
+                    this.addVal();
+                    this.closeBox();
+                },
+                //初始化选中内容
+                initSelected:function () {
+                    var _arr=this.options.selectedArr,
+                        _this=this.$element;
+                    if(_arr.length>0){
+                        for(var i=0;i<_arr.length;i++){
+                            for(var k in _arr[i]){
+                                var $par=_this.find('.js-selected'),
+                                    $selectedLi;
+                                $par.find('.js-default-text').hide(0);
+                                var $item=$('<a style="display: none;" data-value="'+k+'">'+_arr[i][k]+'<i class="delete icon">x</i></a>');
+                                $par.append($item);
+                                $item.fadeIn();
+                                _this.find('ul li').each(function (value) {
+                                    var _id=$(this).attr('data-id');
+                                    if(_id===k){
+                                        $(this).hide(0);
+                                        $selectedLi=$(this);
+                                    }
+                                });
+                                /*删除选中*/
+                                $item.find('.delete').on('click',function () {
+                                    $item.remove();
+                                    $selectedLi.show(0);
+                                    if($par.find('a').length<1){
+                                        $par.find('.js-default-text').show(0);
+                                    }
+                                })
+                            }
+
+                        }
+                    }
+                },
+                showBox:function (_all) {
+                    var _this=this;
+                    this.$element.on('click',function (e) {
+                        e.stopPropagation();
+                        _all.css('zIndex',100).not($(this)).css('zIndex',1).find('ul').hide(0);
+                        $(this).find('ul').slideDown(100);
+                    });
+                },
+                closeBox:function(){
+                    var _this=this.$element;
+                    $(document).on("click", function( e ) {
+                        e.stopPropagation();
+                        if(_this.find('ul:visible')){
+                            _this.find('ul').slideUp(100);
+                        }
+                    });
+                },
+                addVal:function () {
+                    var _this=this.$element;
+                    _this.on('click','ul li',function (e) {
+                        e.stopPropagation();
+                        var $par=_this.find('.js-selected'),
+                            $ul=$(this).parent(),
+                            $selectedLi=$(this);
+                        $par.find('.js-default-text').hide(0);
+                        var $item=$('<a style="display: none;" data-value="'+$(this).attr('data-id')+'">'+$(this).text()+'<i class="delete icon">x</i></a>');
+                        $par.append($item);
+                        $item.fadeIn();
+                        if($(this).siblings().length<1){
+                            $ul.hide(0);
+                        }else{
+                            $(this).hide(0);
+                        }
+                        /*删除选中*/
+                        $item.find('.delete').on('click',function () {
+                            $item.remove();
+                            $selectedLi.show(0);
+                            if($par.find('a').length<1){
+                                $par.find('.js-default-text').show(0);
+                            }
+                        })
+                    });
+                }
+            };
+            $.fn.mySelect=function (options) {
+                //创建实体
+                var _all=this;
+                this.each(function () {
+                     var selectBox=new SelectBox(this,options);
+                     return selectBox.init(_all);
+                });
+                 return this;
+            };
+        }
+    )(jQuery);
+    $('.js-select-box:eq(0)').mySelect({
+        'selectedArr':selecteded
+    });
+</script>
+</body>
+</html>

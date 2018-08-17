@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .my-ellipse{
+            width:200px;
+            overflow:hidden;
+            white-space: normal;
+            border:1px solid #dcdcdc;
+            word-wrap: break-word;
+            position: relative;
+            height:50px;
+            line-height: 25px;
+            font-size:14px;
+        }
+        .my-ellipse:after{
+            content:'\02026';
+            position:absolute;
+            bottom:0;
+            right:0;
+            background-color: #fff;
+            padding:0 10px 0 4px;
+        }
+        .wap-ellipse{
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            width:200px;
+            word-wrap: break-word;
+        }
+        p {
+            position:relative;
+            line-height:1.4em;
+            /* 3 times the line-height to show 3 lines */
+            height:4.2em;
+            overflow:hidden;
+            width:300px;
+        }
+        p::after {
+            content:"...";
+            font-weight:bold;
+            position:absolute;
+            bottom:0;
+            right:0;
+            padding:0 20px 1px 45px;
+            background:url(http://css88.b0.upaiyun.com/css88/2014/09/ellipsis_bg.png) repeat-y;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-ellipse">
+        <div class="main">
+            eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        </div>
+    </div>
+
+    <div class="wap-ellipse">
+        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+    </div>
+    <p>
+        bKit Browsers will clamp the number of lines in this paragraph to 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+    </p>
+</body>
+</html>

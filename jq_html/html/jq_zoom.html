@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜效果</title>
+    <style>
+        .imgbox {
+            position:relative;
+            margin-left:100px;
+        }
+        .probox {
+            width:300px;
+            height:300px;
+            border:1px solid #000;
+        }
+        .probox img {
+            width:300px;
+            height:300px;
+            vertical-align:top;
+        }
+        .showbox {
+            display:none;
+            position:absolute;
+            left:403px;
+            top:0;
+            width:400px;
+            height:300px;
+            overflow:hidden;
+            border:1px solid #ccc;
+        }
+        .showbox img {
+            position:absolute;
+            height:1200px;
+            width:1200px;
+        }
+        .hoverbox {
+            display:none;
+            position:absolute;
+            top:0;
+            background:#09f;
+            border:1px solid #09f;
+            height:75px;
+            width:100px;
+            cursor:move;
+            z-index:10;
+        }
+
+    </style>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="imgbox">
+    <div class="probox">
+        <img src="../image/1505725449633800.jpg" alt="" />
+        <div class="hoverbox"></div>
+    </div>
+    <div class="showbox">
+        <img src="../image/1505725449633800.jpg" alt="" />
+    </div>
+</div>
+<script>
+    var zoom=function (eles) {
+        return new Zoom(eles);
+    };
+    function Zoom(eles) {
+        this.elements=eles;
+        this.imgBox=this.elements.find('.probox img');
+        this.hoverBox=this.elements.find('.hoverbox');
+        this.showBox=this.elements.find('.showbox');
+        this.imgLeft=this.imgBox.offset().left;
+        this.imgTop=this.imgBox.offset().top;
+        this.hoverWidth=this.hoverBox.width();
+        this.hoverHeight=this.hoverBox.height();
+        this.time=null;
+        this.zoomX = this.showBox.find('img').width() / this.imgBox.width();//求图片比例
+        this.zoomY = this.showBox.find('img').height() / this.imgBox.height();
+        this.init();
+        return this;
+    }
+    Zoom.prototype={
+        init:function () {
+            var that=this;
+            this.elements.find('.probox img,.hoverbox').mouseover(function (e) {
+                var x=e.pageX,
+                    y=e.pageY;
+                that.hoverBox.show().css({'opacity':'0.3'});
+                that.showBox.show();
+                that.time=setTimeout(function () {
+                    that.zooms(x,y);
+                },1);
+            }).mousemove(function (e) {
+                var x=e.pageX,
+                    y=e.pageY;
+                that.time=setTimeout(function () {
+                    that.zooms(x,y);
+                },1);
+            }).mouseout(function () {
+                that.showBox.hide();
+                that.hoverBox.hide();
+            });
+        },
+        zooms:function (x,y) {
+            var l=this.imgLeft,
+                t=this.imgTop,
+                w=this.hoverWidth,
+                h=this.hoverHeight,
+                moveX=x-l-w/2,
+                moveY=y-t-h/2;
+            if(moveX<0){
+                moveX=0;
+            }
+            if(moveY<0){
+                moveY=0;
+            }
+            if(moveX>this.imgBox.width()-w){
+                moveX=this.imgBox.width()-w;
+            }
+            if(moveY>this.imgBox.height()-h){
+                moveY=this.imgBox.height()-h;
+            }
+            this.showBox.find('img').css({
+                left: -(moveX * this.zoomX),
+                top: -(moveY * this.zoomY)
+            });
+            this.hoverBox.css({
+                left: moveX,
+                top: moveY
+            });
+        }
+    };
+    zoom($('.imgbox'));
+</script>
+</body>
+</html>

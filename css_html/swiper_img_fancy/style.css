@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 系统样式，CMS定义 By Makey QQ:309770214 */
+body{font-family:"微软雅黑";font-size:12px;color:#393939;margin:0;background:#fff;}
+html{overflow-x:hidden;overflow-y:auto} 
+
+*{margin:0 auto}
+.left{float:left}
+.right{float:right}
+td {font-family:"微软雅黑";font-size:12px;color:#393939}
+p,ul{list-style:none;margin:0;padding:0;border:0px}
+.clear{ clear:both;}/*清除浮动*/
+a{color:#555;behavior:url("images/systemfiles/onfocus.htc"); text-decoration:none}/*去掉点击虚线*/
+a:visited{color:#555}
+.keyword{background-color: #FFFF00;}/*搜索高亮关键词*/
+h1{ font-size:28px; font-weight:100; color:#4a4a4a}
+img{border:none;}
+
+
+
+
+
+
+.tdswipe{position: relative;margin: 80px auto 190px auto !important;width: 1200px;height: 517px;}
+.tdswipe .swiper-slide{position: relative;}
+.tdleft{position: absolute;left: 0;top: 226px;z-index: 20;cursor: pointer}
+.tdright{position: absolute;right: 0;top: 226px;z-index: 20;cursor: pointer}
+
+.tdswipe .year{width: 120px;text-align: center;font-size: 24px;color: #999999;position: absolute;top: 183px;left: 102px;}
+
+.tdswipe .up{position: absolute;top: 0;height: 267px;width: 308px;}
+.tdswipe .up .img{position: absolute;width: 280px;height: 158px;top: 15px;left: 15px;}
+.tdswipe .up .date{position: absolute;top: 227px;width: 93%;text-align: center;font-size: 12px;color: #d8000e;right: 0;display: none;}
+.tdswipe .up .txt{position: absolute;width: 280px;text-align: center;overflow: hidden;white-space: nowrap;font-size: 14px;color: #999999;top: 183px;left: 15px;}
+.tdswipe .up .dot{position: absolute;bottom: 0;left: 151px;width: 26px;height: 26px;background: url("image/off.png") no-repeat center center;}
+.tdswipe .up .box{position: absolute;top: 0;left: 0;width: 100%;}
+
+.tdswipe .bot{position: absolute;bottom: 9px;height: 267px;width: 308px;}
+.tdswipe .bot .img{position: absolute;width: 280px;height: 158px;bottom: 15px;left: 15px;}
+.tdswipe .bot .date{position: absolute;bottom: 227px;width: 93%;text-align: center;font-size: 12px;color: #d8000e;right: 0;display: none;}
+.tdswipe .bot .txt{position: absolute;width: 280px;text-align: center;overflow: hidden;white-space: nowrap;font-size: 14px;color: #999999;bottom: 183px;left: 15px;}
+.tdswipe .bot .dot{position: absolute;top: 0;left: 151px;width: 26px;height: 26px;background: url("image/off.png") no-repeat center center;}
+.tdswipe .bot .box{position: absolute;bottom: 0;left: 0;width: 100%;}
+
+
+.tdswipe .tdimg:hover .dot{background: url("image/on.png") no-repeat center center;}
+.tdswipe .tdimg:hover .box{transform:scale(1.05);-webkit-transform: scale(1.05);-moz-transform: scale(1.05);}
+.tdswipe .tdimg:hover .date{display: block;}
+.tdswipe .tdimg:hover{cursor: pointer;}
+.tdswipe .box{position: relative;}
+
+
+.tdswipe .m20{left: 20%}
+.tdswipe .m22{left: 22%}
+.tdswipe .m30{left: 30%}
+.tdswipe .m40{left: 40%}
+.tdswipe .m50{left: 50%}
+.tdswipe .m52{left: 52%}
+.tdswipe .m60{left: 60%}

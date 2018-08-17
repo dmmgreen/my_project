@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul, li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+        .clearfix:after {
+            content: '';
+            width: 0;
+            height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        .box *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .addSelectBox{
+            width:650px;
+            height:600px;
+        }
+        .addSelectBox .search-left{
+            width: 20%;
+            float: left;
+        }
+        .addSelectBox .search-left-input{
+            margin: 0 12px 12px;
+            padding: 6px;
+            border:1px solid #999;
+            overflow: hidden;
+        }
+        .addSelectBox .search-left-input input{
+            border: none;
+        }
+        .addSelectBox .search-select-box{
+            border-right:1px solid #d4d4d4;
+            border-top:1px solid #d4d4d4;
+            height: 270px;
+            color: #666;
+            overflow-y: auto;
+        }
+        .addSelectBox .search-select-box-item{
+            border-bottom: 1px solid #e1e1e8;
+            padding: 6px 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            cursor: pointer;
+        }
+        .addSelectBox .search-select-box-item input[type='checkbox']{
+            pointer-events: none;
+        }
+        .addSelectBox .search-select-box-item.active{
+            color: #333;
+            background-color: #ddd;
+        }
+        .addSelectBox .search-right{
+            width: 80%;
+            float: left;
+            padding-left: 20px;
+            color: #333;
+            height: 315px;
+            overflow-y: auto;
+        }
+        .addSelectBox .search-right-item{
+            padding: 10px 6px;
+            border: 1px solid #e1e1e8;
+            display: inline-block;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            width: 100px;
+            position: relative;
+            cursor: pointer;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .addSelectBox .search-right-item:nth-of-type(4n){
+            margin-right: 0;
+        }
+        .addSelectBox .search-right-item input[type='checkbox']{
+            pointer-events: none;
+            position: absolute;
+            right:6px;
+        }
+        .addSelectBox .selected-box{
+            border-top:1px solid #d4d4d4;
+        }
+        .addSelectBox .selected-box{
+            padding: 20px;
+        }
+        .addSelectBox .selected-title{
+            position: relative;
+            color: #111;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .addSelectBox .btn-remove{
+            position: absolute;
+            right:0;
+            color: #ff5f3d;
+            font-size: 14px;
+            display: block;
+            top:0;
+        }
+        .addSelectBox .selected-itemBox{
+            margin: 20px 0;
+            color: #666;
+        }
+        .addSelectBox .selected-itemBox-item{
+            display: inline-block;
+            border: 1px solid #e1e1e8;
+            padding: 5px 10px;
+            width: 80px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            margin-right: 20px;
+            position: relative;
+        }
+        .addSelectBox .btn-close{
+            position: absolute;
+            right:5px;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="addSelectBox clearfix">
+        <div class="searchBox clearfix">
+            <div class="search-left">
+                <div class="search-left-input">
+                    <input type="text" placeholder="搜索人员">
+                </div>
+                <div class="search-select-box">
+                </div>
+            </div>
+            <div class="search-right">
+                <span class="search-right-item">
+                    王王王
+                    <input type="checkbox">
+                </span>
+            </div>
+        </div>
+        <div class="selected-box">
+            <div class="selected-title">
+                <span>已选人员</span>
+                <span class="btn-remove">清空</span>
+            </div>
+            <div class="selected-itemBox">
+                <span class="selected-itemBox-item">
+                    王王王
+                    <i class="btn-close">x</i>
+                </span>
+            </div>
+            <div>
+                <button class="btn btn-success">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../css_html/js/jquery-1.9.1.min.js"></script>
+<script>
+    /*var data = [{'id':'1','name':'厦门大学','selected':false}, {'id':'2','name':'厦门理工学院','selected':false},{'id':'3','name':'浙江大学','selected':false}];*/
+    var data=[{'id':'1','value':'测试班级','selected':false,classArr:[{'id':'1','value':'张三','selected':false},{'id':'2','value':'李四','selected':false}]},{'id':'2','value':'测试班级2','selected':true,classArr:[{'id':'21','value':'张s','selected':true},{'id':'22','value':'李s','selected':true}]}];
+    /*多选操作*/
+    ;(function ($, doc, win, undefined) {
+        var SelectBox = function (ele, option) {
+            this.$element = $(ele);
+            this.defaults = {
+                "dataList": []
+            };
+            /*全局定义*/
+            $this = this;
+            this.options = $.extend({}, this.defaults, option);
+            /*班级列表*/
+            this.$selectBox = $('.search-select-box');
+            /*定义保存选中内容*/
+            this.result=[];
+            /*暂存选中数据*/
+            this.tempArr = [];
+            this.searchArr=[];
+            this.tempArr=this.options.dataList;
+
+        };
+        SelectBox.prototype = {
+            init: function () {
+                var data = this.tempArr;
+                this.dataFull(data);
+                this.deleSelectCont();
+                this.deleSelect();
+                this.searchDate();
+                this.submitDate();
+            },
+            /*初始化填充数据*/
+            dataFull: function (data) {
+                $this.$selectBox.empty();
+                $('.selected-itemBox').empty();
+                var count=0;
+                for (var i = 0; i < data.length; i++) {
+                    // var arr=$.parseJSON(data[i]);
+                    var arr = data[i];
+                    var flag = arr.selected ? "checked" : "",
+                        isHide=arr.isHidden||false;
+                    if(!isHide){
+                        var classN=(count===0)?"search-select-box-item":"search-select-box-item active";
+                        var $item = $('<div class='+classN+' title="' + arr.value + '" data-values="' + arr.id + '"><input class="checkClass" type="checkbox" value="' + arr.id + '" ' + flag + '>' + arr.value + '</div>');
+                        $this.$selectBox.append($item);
+                        $this.checkedSelect($item,i);
+                        if(count===0){
+                            $item.click();
+                        }
+                        count++;
+                        /*初始选中添加到已选人员*/
+                        for(var j=0;j<arr.classArr.length;j++){
+                            if($('[data-studentid="'+arr.classArr[j].id+'"]').length<1 && arr.classArr[j].selected){
+                                var $seitem = $('<span class="selected-itemBox-item" data-classid="'+arr.id+'" data-studentid="'+arr.classArr[j].id+'">'+arr.classArr[j].value+'<i class="btn-close">x</i></span>');
+                                $('.selected-itemBox').append($seitem);
+                            }
+                        }
+                    }
+
+                }
+            },
+            /*点击选中学校*/
+            checkedSelect: function (obj, i) {
+                var $t = obj;
+                $t.on('click', function (e) {
+                    $('.search-right').empty();
+                    $(this).addClass('active').siblings().removeClass('active');
+                    $this.checkedData(i);
+                });
+                var ckb=$t.find('input[type="checkbox"]');
+                $this.checkAll($t,ckb);
+            },
+            /*全选和取消全选操作*/
+            checkAll: function ($t,obj) {
+                var $ckbox = obj;
+                $ckbox.on('click',function (evt) {
+                    /*var e=(evt)?evt:window.event;
+                     if (window.event) {
+                     e.cancelBubble=true;// ie下阻止冒泡
+                     } else {
+                     e.stopPropagation();// 其它浏览器下阻止冒泡
+                     }*/
+                    var isSelectAll = $(this).prop("checked"),
+                        id = $t.attr('data-values');
+                    var temp = $this.tempArr;
+                    for (var i = 0; i < temp.length; i++) {
+                        if (temp[i].id === id) {
+                            var classA = [],
+                                tClass = temp[i].classArr;
+                            for (var j = 0; j < tClass.length; j++) {
+                                var newItem=tClass[j];
+                                var isHidden=newItem.isHidden||false;
+                                if(!isHidden){
+                                    newItem.selected=isSelectAll;
+                                    if(isSelectAll){
+                                        /*全选新增到已选内容*/
+                                        var $seitem = $('<span class="selected-itemBox-item" data-classid="'+id+'"  data-studentid="'+tClass[j].id+'">'+tClass[j].value+'<i class="btn-close">x</i></span>');
+                                        if($('[data-studentid="'+tClass[j].id+'"]').length<1){
+                                            $('.selected-itemBox').append($seitem);
+                                        }
+                                    }else{
+                                        /*取消全选*/
+                                        $('[data-studentid="'+tClass[j].id+'"]').remove();
+                                    }
+                                }
+                                classA.push(newItem);
+                                $('[data-values="'+tClass[j].id+'"]').find('input[type="checkbox"]').prop('checked',isSelectAll);
+
+                            }
+                            var newArr=temp[i];
+                            newArr.selected=isSelectAll;
+                            newArr.classArr=classA;
+                            $this.tempArr[i] = newArr;
+                        }
+                    }
+                });
+            },
+            /*根据点击学校产生的右边数据*/
+            checkedData: function (idex) {
+                var arrs=$this.tempArr[idex],
+                    data = arrs.classArr;
+                for (var i = 0; i < data.length; i++) {
+                    // var arr=$.parseJSON(data[i]);
+                    /*根据数组内容生成右边选项*/
+                    var arr = data[i];
+                    var ck = arr.selected ? 'checked' : '',
+                        ishidden=arr.isHidden||false?"none":"inline-block";
+                    var $item = $('<span style="display: '+ishidden+'" class="search-right-item" data-value="' + arr.id + '">' + arr.value + '<input name="class_' + arrs.id + '" type="checkbox" value="' + arr.id + '" ' + ck + '></span>');
+                    $(".search-right").append($item);
+                    $item.find('input[type="checkbox"]').on('click', function () {
+                        $this.addSelected($(this), arrs);
+                    });
+                }
+            },
+            /*选中右边选中数据添加到已选人员*/
+            addSelected: function (obj, arrs) {
+                var flag = obj.prop('checked');
+                var temp = $this.tempArr,
+                    id=arrs.id;
+                /*是否选中更改保存的临时数组*/
+                for (var i = 0; i < temp.length; i++) {
+                    if (temp[i].id === id) {
+                        var classA = [],
+                            tClass = temp[i].classArr,
+                            isSelectCout=0;//用于判断是否全选
+                        for (var j = 0; j < tClass.length; j++) {
+                            if(tClass[j].selected){
+                                isSelectCout++;
+                            }
+                            if(obj.val()===tClass[j].id){
+                                var newClass=tClass[j];
+                                newClass.selected=flag;
+                                classA.push(newClass);
+                                flag?isSelectCout++:isSelectCout--;
+
+                                if(flag){
+                                    /*是否选中到已选内容*/
+                                    var $seitem = $('<span class="selected-itemBox-item" data-classid="'+id+'" data-studentid="'+tClass[j].id+'">'+tClass[j].value+'<i class="btn-close">x</i></span>');
+                                    if($('[data-studentid="'+tClass[j].id+'"]').length<1){
+                                        $('.selected-itemBox').append($seitem);
+                                    }
+                                }else{
+                                    /*取消选中*/
+                                    $('[data-studentid="'+tClass[j].id+'"]').remove();
+                                }
+                            }else{
+                                var newArr=tClass[j];
+                                classA.push(newArr);
+                            }
+                        }
+                        $this.tempArr[i] = {id: id, value: temp[i].value, selected: tClass.length===isSelectCout, classArr: classA};
+                        /*全选修改班级全选checkbox*/
+                        $('[data-values="'+id+'"]').find('input[type="checkbox"]').prop('checked',tClass.length===isSelectCout);
+                    }
+                }
+            },
+            /*清空选中人员*/
+            deleSelectCont:function () {
+                var $btn=$this.$element.find('.btn-remove');
+                $btn.on('click',function () {
+                    $this.$element.find('.selected-itemBox').empty();
+                    $this.$element.find('input[type="checkbox"]').prop("checked",false);
+                    var arr=$this.tempArr;
+                    for(var i=0;i<arr.length;i++){
+                        var classA=[],
+                            tClass = arr[i].classArr;
+                        for (var j = 0; j < tClass.length; j++) {
+                            var newC=tClass[j];
+                            newC.selected=false;
+                            classA.push(newC);
+                        }
+                        var newArr=arr[i];
+                        newArr.selected=false;
+                        newArr.classArr=classA;
+                        $this.tempArr[i] = newArr;
+                    }
+                });
+            },
+            /*删除选中人员*/
+            deleSelect:function () {
+                $(document).on('click','.btn-close',function () {
+                    var $par=$(this).parents('.selected-itemBox-item'),
+                        sid=$par.attr('data-studentid'),
+                        cid=$par.attr('data-classid');
+                    var arr=$this.tempArr;
+                    for(var i=0;i<arr.length;i++){
+                        if(cid=arr[i].id){
+                            var classA=[],
+                                tClass = arr[i].classArr,
+                                isSelectCout=0;//用于判断是否全选
+                            for (var j = 0; j < tClass.length; j++) {
+                                if(tClass[j].selected && sid!==tClass[j].id){
+                                    isSelectCout++;
+                                }
+                                if(sid===tClass[j].id){
+                                    var newC=tClass[j];
+                                    newC.selected=false;
+                                    classA.push(newC);
+                                    $('[data-value="'+sid+'"]').find('input[type="checkbox"]').prop('checked',false);
+                                }else{
+                                    classA.push(tClass[j]);
+                                }
+                            }
+                            var newArr=arr[i];
+                            newArr.selected=tClass.length===isSelectCout;
+                            newArr.classArr=classA;
+                            $this.tempArr[i] = newArr;
+                        }
+                    }
+                    $par.remove();
+                    $('[data-values="'+cid+'"]').find('input[type="checkbox"]').prop('checked',false);
+                })
+            },
+            /*搜索人员*/
+            searchDate:function () {
+                var $btn=$this.$element.find('.btn-search');
+                $btn.on('click',function () {
+                    $this.$element.find('.search-right').empty();
+                    $this.dataReset();
+                    var $obj=$this.$element.find('.search-search-input'),
+                        _val=$obj.val();
+                    var _filter = [];
+                    if(_val.trim().length>0){
+                        var _dataList=$this.tempArr;
+                        for(var i=0;i<_dataList.length;i++){
+                            var item=_dataList[i].classArr,
+                                _class=[],
+                                hiddenCount=0;
+                            for (var j in item) {
+                                var newItem=item[j];
+                                if (!(item[j].value.indexOf(_val) > -1)) {
+                                    newItem.isHidden=true;
+                                    hiddenCount++;
+                                }
+                                _class.push(newItem);
+                            }
+                            var nArr=_dataList[i];
+                            if(hiddenCount===_class.length){
+                                nArr.isHidden=true;
+                            }
+                            nArr.classArr=_class;
+                            _filter.push(nArr);
+                        }
+                        $this.tempArr=_filter;
+                    }
+                    $this.dataFull($this.tempArr);
+                });
+            },
+            /*点击确认选中人员*/
+            submitDate:function () {
+                $this.$element.find('.btn-success').on('click',function () {
+                    $('.selectShowbox').empty();
+                    var arr=$this.tempArr,
+                        resultArr=[];
+                    for(var i=0;i<arr.length;i++){
+                        var newArr={id:arr[i].id,value:arr[i].value},newClass=[],carr=arr[i].classArr,_chtml='';
+                        for(var j=0;j<carr.length;j++){
+                            if(carr[j].selected){
+                                _chtml+=carr[j].id+'#';
+                                newClass.push(carr[j].id);
+                            }
+                        }
+                        if(newClass.length>0){
+                            newArr.classArr=newClass;
+                            resultArr.push(newArr);
+                            $('.selectShowbox').append('<div class="showBoxItem">'+arr[i].value+'<input data-hclassid="'+arr[i].id+'" type="hidden" name="class['+arr[i].id+']" value="'+_chtml+'"><i class="show-btn-close">x</i></div>');
+                        }
+                    }
+                    $this.result=resultArr;
+                    $('#classModal').modal('hide');
+                });
+            },
+            /*搜索还原数据*/
+            dataReset:function () {
+                var _filter = [],
+                    _dataList=$this.tempArr;
+                for(var i=0;i<_dataList.length;i++){
+                    var isSelectCount=0;
+                    var item=_dataList[i].classArr,
+                        _class=[];
+                    for (var j in item) {
+                        var newItem={id:item[j].id,value:item[j].value,selected:item[j].selected};
+                        item[j].selected?isSelectCount++:'';
+                        _class.push(newItem);
+                    }
+                    var newArr={id:_dataList[i].id,value:_dataList[i].value,selected:item.length===isSelectCount,classArr:_class};
+                    _filter.push(newArr);
+                }
+                $this.tempArr=_filter;
+                return _filter;
+            }
+        };
+        /*在插件中使用selectBox对象*/
+        $.fn.SelectClass = function (options) {
+            this.each(function () {
+                var select = new SelectBox(this, options);
+                return select.init();
+            })
+        }
+    }(jQuery, document, window));
+
+    $('.box').SelectClass({'dataList':data});
+</script>
+</html>

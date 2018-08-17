@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>css重新file</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+        .my-file {
+            width: 220px;
+            display: inline-block;
+            border: 1px solid #e1e1e8;
+            height: 30px;
+            line-height: 30px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .my-file .spn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 76px;
+            height: 100%;
+            color: #fff;
+            font-size: 14px;
+            background-color: #49afcd;
+            text-align: center;
+        }
+
+        .my-file .my-file-txt {
+            color: #aaa;
+            font-size: 14px;
+            text-indent: 10px;
+            width: 130px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .my-file [type='file'] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        .my-file [type='file']:focus {
+            outline: none;
+        }
+
+        .my-file-error {
+            display: inline-block;
+            line-height: 27px;
+            vertical-align: top;
+            color: #ff2400;
+            font-style: normal;
+        }
+    </style>
+</head>
+
+<body>
+<div class='my-file js-my-file'>
+    <span class='my-file-txt'>选择文件</span>
+    <span class='spn'>选择文件</span>
+    <input type="file" />
+</div>
+<div class="my-file-error"></div>
+</body>
+<script>
+    //上传文件
+    function jsFile() {
+        $('.js-my-file').on('click',function () {
+            $(this).next('.my-file-error').text('');
+            $(this).find('.my-file-txt').text('');
+        });
+        $('.js-my-file [type="file"]').on('change',function () {
+            if(this.files && this.files.length>0){
+                $(this).parent().find('.my-file-txt').text(this.files[0].name);
+                var file=this.files[0].name;
+                var ty = file.substr(file.lastIndexOf("."));
+                var reg=/^.(xls|xlsx)$/;
+                if(!reg.test(ty)){
+                    $(this).parent().next('.my-file-error').text('文件格式错误，请重新上传');
+                }
+            }else{
+                $(this).parent().find('.my-file-txt').text('');
+            }
+        });
+    }
+    jsFile();
+</script>
+</html>
+

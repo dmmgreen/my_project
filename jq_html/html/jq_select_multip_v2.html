@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .js-select-box{
+            position: relative;
+            z-index:1;
+        }
+        .js-selected{
+            width: 220px;
+            padding: 0 15px;
+            height:30px;
+            line-height:30px;
+            border:1px solid #e1e1e8;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .js-select-box ul{
+            position: absolute;
+            top:28px;
+            left:0;
+            z-index:10000;
+            width: 220px;
+            max-height:210px;
+            overflow-y: auto;
+            border:1px solid #e1e1e8;
+            line-height:30px;
+            list-style-type: none;
+            background-color:#fff;
+            margin:0;
+            padding:0;
+            display: none;
+        }
+        .js-select-box ul li{
+            line-height:24px;
+            padding:0 10px;
+            margin: 3px 0;
+            height:24px;
+            cursor:pointer;
+        }
+        .js-select-box ul li.active{
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+<div class="form-line">
+    <div class="js-select-box">
+        <span class="js-selected"></span>
+        <ul>
+            <li data-id="1">1</li>
+            <li data-id="2">2</li>
+            <li data-id="3">3</li>
+        </ul>
+        <input type="hidden" />
+    </div>
+</div>
+<div class="form-line" style="margin-top: 20px;margin-left:20px;">
+    <div class="js-select-box">
+        <span class="js-selected"></span>
+        <ul>
+            <li data-id="11">11</li>
+            <li data-id="22">22</li>
+            <li data-id="33">33</li>
+        </ul>
+        <input type="hidden" />
+    </div>
+</div>
+<script src="../../css_html/js/jquery-1.9.1.min.js"></script>
+<script>
+
+    ;(function ($) {
+            var SelectBox=function (ele,opt) {
+                this.$element=$(ele);
+                this.defaults={
+                    slideTime:100
+                };
+                this.options=$.extend({},this.defaults,opt);
+            };
+            SelectBox.prototype={
+                init:function (_all) {
+                    this.showBox(_all);
+                    this.addVal();
+                    this.closeBox();
+                },
+                showBox:function (_all) {
+                    var _this=this;
+                    _this.$element.on('click',this,function (e) {
+                        e.stopPropagation();
+                        _all.css('zIndex',100).not($(this)).css('zIndex',1).find('ul').hide(0);
+                        $(this).find('ul').slideToggle(100);
+                    });
+                },
+                closeBox:function(){
+                    var _this=this.$element;
+                    $(document).on("click", function( e ) {
+                        e.stopPropagation();
+                        if(_this.find('ul:visible')){
+                            _this.find('ul').slideUp(100);
+                        }
+                    });
+                },
+                addVal:function () {
+                    var _this=this.$element;
+                    _this.on('click','ul li',function (e) {
+                        e.stopPropagation();
+                        var _val=[],_text='';
+                        if($(this).hasClass('active')){
+                            $(this).removeClass('active');
+                        }else {
+                            $(this).addClass('active');
+                        }
+                        _this.find('li').each(function () {
+                            if($(this).hasClass('active')){
+                                _val.push($(this).attr('data-id'));
+                                _text+=$(this).text()+',';
+                            }
+                        });
+                        _this.find('.js-selected').text(_text.slice(0,-1));
+                        _this.find('input').val(_val);
+                    });
+                }
+            };
+            $.fn.mySelect=function (options) {
+                //创建实体
+                var _all=this;
+                this.each(function () {
+                     var selectBox=new SelectBox(this,options);
+                     return selectBox.init(_all);
+                });
+                 return this;
+            };
+        }
+    )(jQuery);
+    $('.js-select-box').mySelect();
+</script>
+</body>
+</html>
