@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var myfile;
+    function checkPic(obj){
+        var file = obj.files[0];//获取file文件对象
+        var _this=obj;
+        if(obj.files && obj.files.length>0){
+//预览功能 start
+            var preview='';
+            var  reader = new FileReader();//创建读取对象
+            reader.onload = function (e) {
+                preview = e.target.result;//读取加载，将图片编码绑定到元素;
+                myfile=file;
+                if(file.size/1024 >= 500) { //大于1M，进行压缩上传
+                    canvasDataURL(preview,300,file.size/1024,function (dataB) {
+                        var bl= convertBase64UrlToBlob(dataB);
+                        myfile=bl;
+//                        console.log(bl,file);
+                    });
+                }
+                var upimg_obj=document.getElementsByClassName('upimg');
+                upimg_obj[0].setAttribute('src',preview);
+            };
+            reader.readAsDataURL(file);//获取图片编码
+        }
+    }
+    /*path:图片地址
+     * obj:对象
+     * callback:回调*/
+    function canvasDataURL(path, obj, sz,callback){
+        var img = new Image();
+        img.src = path;
+        img.onload = function(){
+            var that = this;
+            var per=Math.ceil((500/sz)*10)/10;
+            console.log(per);
+            // 默认按比例压缩
+            var w = (that.width),
+                h = (that.height),
+                scale = w / h;
+            w = obj.width || w;
+            h = obj.height || (w / scale);
+            var quality =per;  // 默认图片质量为0.7
+            //生成canvas
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            //如果图片大于四百万像素，计算压缩比并将大小压至400万以下
+            var ratio=w*h/4000000;
+            if(ratio>1){
+                w/=ratio;
+                h/=ratio;
+            }else{
+                ratio=1;
+            }
+            // 创建属性节点
+            var anw = document.createAttribute("width");
+            anw.nodeValue = w;
+            var anh = document.createAttribute("height");
+            anh.nodeValue = h;
+            canvas.setAttributeNode(anw);
+            canvas.setAttributeNode(anh);
+            ctx.drawImage(that, 0, 0, w, h);
+            // 图像质量
+            if(obj.quality && obj.quality <= 1 && obj.quality > 0){
+                quality = obj.quality;
+            }
+            // quality值越小，所绘制出的图像越模糊
+            var base64 = canvas.toDataURL('image/jpeg', quality);
+            // 回调函数返回base64的值
+            callback(base64);
+        }
+    }
+    /**
+     * 将以base64的图片url数据转换为Blob
+     * @param urlData
+     *            用url方式表示的base64图片数据
+     */
+    function convertBase64UrlToBlob(urlData){
+        var arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+
+//        return  new File([u8arr],'newFile', {type:mime});
+        return new Blob([u8arr], {type:mime});
+    }
+
+
+    /*表单提交*/
+    /**/
+    $('.submit-btn').on('click', function () {
+        var fd=new FormData($('#registerForm')[0]);
+        fd.append('jsfile',myfile);
+        $.ajax({
+            type: "post",
+            url: "{$Think.session.UustarApiUrl}/api.php/api/user/login/mobile",
+            dataType: "json",
+//            async: false,
+            data: new FormData($('#registerForm')[0]),
+            success: function (data) {
+
+            }
+        });
+    });
+
+
+</script>
+</html>
