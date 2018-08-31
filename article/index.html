@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet/less" href="css/layout.less">
+    <script src="js/less.min.js"></script>
+</head>
+<body>
+<header>
+    <div class="common-box clearfix">
+        <ul class="header-menu">
+            <li class="menu-li"><a href="index.html">首页</a></li>
+            <li class="menu-li"><a href="#">在线阅读</a></li>
+            <li class="menu-li">
+                <div class="header-search">
+                    <input type="search">
+                    <i class="iconfont search-icon"></i>
+                </div>
+            </li>
+        </ul>
+        <div class="header-btnBox">
+            <a href="login.html" class="common-btn btn-login">登录</a>
+            <a href="register.html" class="common-btn btn-register">注册</a>
+        </div>
+    </div>
+</header>
+<div class="content-box">
+    <div class="common-box">
+        <!--轮播图-->
+        <div class="slide-box banner">
+            <div class="slide-wrapper">
+                <div class="slide">
+                    <img src="uploads/banner1.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="uploads/banner2.jpg" alt="">
+                </div>
+            </div>
+            <div class="slide-page">
+            </div>
+            <div class="slide-btn">
+                <div class="slide-prev">&lt;</div>
+                <div class="slide-next">&gt;</div>
+            </div>
+        </div>
+        <!--tag box-->
+       <!-- <div class="index-tag-box">
+
+        </div>-->
+        <!--article-->
+        <ul class="article-list">
+            <li class="article-item">
+                <div class="article-content">
+                    <a href="#" class="article-title">你知道乞丐服是怎样加工出来的吗？</a>
+                    <p class="article-abstract">
+                        乞丐裤就是这样加工出来的:瞧……！ 从前是吃不上穿不上的穷人穿乞丐服， 现在是吃的好穿的好的人穿乞丐服了！
+                    </p>
+                    <div class="article-meta">
+                        <span>我是作者</span>
+                        <span class="iconfont icon-msg">0</span>
+                        <span class="iconfont icon-heart">0</span>
+                    </div>
+                </div>
+                <div class="article-img">
+                    <img src="uploads/banner2.jpg" alt="">
+                </div>
+            </li>
+            <li class="article-item">
+                <div class="article-content">
+                    <a href="#" class="article-title">咖啡小屋||懂的快乐</a>
+                    <p class="article-abstract">
+                        懂，从字面看，“心”的“重”要部分埋藏在“草”丛下，要想懂，必须扒开草丛找到那重要的部分，但，你无法预测到草丛中会扒拉出什么，风险蛮大。所以，很少有人愿意去“懂”别人。
+                        没有人有义务去懂你，你也不必费尽心思地去懂别人，求同存异，互相欣赏即可。既要去享受别人的快乐，同时也要去分享别人的痛苦，同样的道理，没有任何人有义务一直给与你快乐，如果你一直享受着某人给与你的快乐，那么这个人就一定是承担了全部的痛苦，你怎么可以那样自私？！
+                    </p>
+                    <div class="article-meta">
+                        <span>我是作者</span>
+                        <span class="iconfont icon-msg">0</span>
+                        <span class="iconfont icon-heart">0</span>
+                    </div>
+                </div>
+                <div class="article-img">
+                    <img src="uploads/banner2.jpg" alt="">
+                </div>
+            </li>
+            <li class="article-item">
+                <div class="article-content">
+                    <a href="#" class="article-title">咖啡小屋||懂的快乐</a>
+                    <p class="article-abstract">
+                        懂，从字面看，“心”的“重”要部分埋藏在“草”丛下，要想懂，必须扒开草丛找到那重要的部分，但，你无法预测到草丛中会扒拉出什么，风险蛮大。所以，很少有人愿意去“懂”别人。
+                        没有人有义务去懂你，你也不必费尽心思地去懂别人，求同存异，互相欣赏即可。既要去享受别人的快乐，同时也要去分享别人的痛苦，同样的道理，没有任何人有义务一直给与你快乐，如果你一直享受着某人给与你的快乐，那么这个人就一定是承担了全部的痛苦，你怎么可以那样自私？！
+                    </p>
+                    <div class="article-meta">
+                        <span>我是作者</span>
+                        <span class="iconfont icon-msg">0</span>
+                        <span class="iconfont icon-heart">0</span>
+                    </div>
+                </div>
+                <div class="article-img">
+                    <img src="uploads/banner2.jpg" alt="">
+                </div>
+            </li>
+        </ul>
+        <a href="#" class="load-more">加载更多》</a>
+    </div>
+</div>
+<footer>
+<p>©2012-2018 copyright</p>
+</footer>
+<script src="js/bannerSlider.js"></script>
+<script>
+    window.onload=function () {
+        var banner = new BannerSlider(document.querySelector(".banner"), {
+            autoHeight: true,
+            autoPlay:false
+        });
+    };
+</script>
+</body>
+</html>
