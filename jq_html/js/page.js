@@ -99,8 +99,8 @@
                                 createPage();
                             }
                         }).error(function () {
-                            alert("图片地址有问题");
-                            $(this).attr("src","../image/361.png")
+                            // alert("图片地址有问题");
+                            $(this).attr("src","../img/loading.gif");
                             return false;
                         }).attr("src",_src);
                     });
@@ -302,7 +302,11 @@
                 var attr=opt[0].attributes;
                 for(var i=0;i<attr.length;i++){
                     if(attr[i].specified){
-                        tag=tag+' '+attr[i].name.toLowerCase() + '="'+attr[i].value+'"';
+                        var _value=attr[i].value;
+                        if(attr[i].name==='width' && parseInt(attr[i].value)>getSize()[0]){
+                            _value='100%';
+                        }
+                        tag=tag+' '+attr[i].name.toLowerCase() + '="'+_value+'"';
                     }
                 }
                 tag=tag+"/>";
@@ -311,7 +315,10 @@
             /*截字*/
             function splitText(opt,box) {
                 var textString=$(opt).text().replace(/\&nbsp\;/g," "),
-                    allChars=textString.split(/\s+/),
+                    /*
+                     * 20180920 allChars=textString.split(/\s+/)改成 allChars=textString.split("")
+                     * */
+                    allChars=textString.split(""),
                     y=0;
                 if($last.height()>=columnHeight){
                     pflag=false;
@@ -320,7 +327,10 @@
                 if($last.height()<=columnHeight){
                     var $prefinish,thisChar;
                     while ($last.height()<=columnHeight && y<allChars.length){
-                        box.append(allChars[y]+" ");
+                        /*
+                        * 20180920  box.append(allChars[y]+" ");改成 box.append(allChars[y]+"");
+                        * */
+                        box.append(allChars[y]+"");
                         $prefinish=$clone.html();
                         if(allChars[y].indexOf("[")>-1 || allChars[y].indexOf("]")>-1 || allChars[y].indexOf("(")>-1 || allChars[y].indexOf(")")>-1 || allChars[y].indexOf("?")>-1 || allChars[y].indexOf(".")>-1){
                             thisChar=allChars[y].replace(/[[]/g,"[[]");
